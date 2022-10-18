@@ -1,3 +1,6 @@
+[![Build Status](https://github.com/niteshjha08/Human-Detection-and-Tracking/actions/workflows/build_and_coveralls.yml/badge.svg)](https://github.com/niteshjha08/Human-Detection-and-Tracking/actions/workflows/build_and_coveralls.yml)
+[![Coverage Status](https://coveralls.io/repos/github/niteshjha08/Human-Detection-and-Tracking/badge.svg?branch=master)](https://coveralls.io/github/niteshjha08/Human-Detection-and-Tracking?branch=master)
+
 # Human Detection and Tracking
 
 ## Project Description
