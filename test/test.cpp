@@ -1,9 +1,11 @@
 #include <gtest/gtest.h>
+
 #include "detector.hpp"
+#include "preprocessor.hpp"
 
 TEST(Detector, setInputSize) {
   Detector detector;
-  cv::Size s(100.0,100.0);
+  cv::Size s(100.0, 100.0);
   ASSERT_NO_THROW(detector.setInputSize(s));
 }
 
@@ -27,7 +29,7 @@ TEST(Detector, setNMSThreshold) {
 
 TEST(Detector, setClassesToDetect) {
   Detector detector;
-  std::vector<std::string> classes{"person","car"};
+  std::vector<std::string> classes{"person", "car"};
   ASSERT_NO_THROW(detector.setClassesToDetect(classes));
 }
 
@@ -44,4 +46,21 @@ TEST(Detector, setModelPath2) {
 TEST(Detector, setClassList) {
   Detector detector;
   ASSERT_NO_THROW(detector.setClassList("./../"));
+}
+
+TEST(Preprocessor, preProcess1) {
+  Preprocessor preprocessor;
+  cv::Mat img;
+  ASSERT_ANY_THROW(preprocessor.preProcess(img));
+}
+
+TEST(Preprocessor, preProcess2) {
+  Preprocessor preprocessor;
+  cv::Mat img = cv::imread("./../data/test/1.jpg");
+  ASSERT_NO_THROW(preprocessor.preProcess(img));
+}
+
+TEST(Preprocessor, getInputSize1) {
+  Preprocessor preprocessor;
+  ASSERT_NO_THROW(preprocessor.getInputSize());
 }
