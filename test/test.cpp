@@ -2,6 +2,7 @@
 
 #include "detector.hpp"
 #include "preprocessor.hpp"
+#include "data.hpp"
 
 TEST(Detector, setInputSize) {
   Detector detector;
@@ -63,4 +64,42 @@ TEST(Preprocessor, preProcess2) {
 TEST(Preprocessor, getInputSize1) {
   Preprocessor preprocessor;
   ASSERT_NO_THROW(preprocessor.getInputSize());
+}
+
+TEST(Data, Init1) {
+  std::string mode = "images";
+  ASSERT_NO_THROW(Data data(mode, mode, mode));
+}
+
+TEST(Data, getInput1) {
+  std::string mode = "images";
+  Data data(mode, mode, mode);
+  ASSERT_NO_THROW(data.getInput());
+}
+
+TEST(Data, getInput2) {
+  std::string mode = "images";
+  Data data(mode, mode, mode);
+  cv::Mat img = data.getInput();
+  ASSERT_NE(img.size().height, 100);
+}
+
+TEST(Data, getInput3) {
+  std::string mode = "stream";
+  Data data(mode, mode, mode);
+  cv::Mat img = data.getInput();
+  ASSERT_NE(img.size().height, 100);
+}
+
+TEST(Data, writeData1) {
+  std::string s = "images";
+  Data data(s, s, s);
+  ASSERT_ANY_THROW(data.writeData(cv::Mat(), s));
+}
+
+TEST(Data, writeData2) {
+  std::string s = "images";
+  Data data(s, s, s);
+  cv::Mat img(320, 240, CV_8UC3, cv::Scalar(0, 0, 0));
+  ASSERT_NO_THROW(data.writeData(img, s));
 }
