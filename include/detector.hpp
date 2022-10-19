@@ -7,26 +7,36 @@
 
 class Detector {
  public:
-  // setupDetector
+
   Detector();
 
   ~Detector();
 
-  cv::Mat detect(cv::Mat &blob);
+  cv::Mat detect(cv::Mat &input_blob, cv::Mat &input_image);
 
-  void logDetectorInfo();
+  void setInputSize(const cv::Size size);
+
+  void setScoreThreshold(const double score_thresh);
+
+  void setConfidenceThreshold(const double conf_thresh);
+
+  void setNMSThreshold(const double nms_thresh);
+
+  void setClassesToDetect(const std::vector<std::string> classes);
+
+  void setModelPath(const std::string model_path);
+
+  void setClassList(const std::string class_list_path);
 
  private:
-  // TODO: pull from a config file
-  void setupDetector();
 
   void filterDetections(cv::Mat &input_image, std::vector<cv::Mat> &outputs);
-
-  cv::Mat preProcess(cv::Mat &input_image);
 
   std::vector<cv::Mat> runInference(cv::Mat &blob);
 
   cv::Mat NMS(cv::Mat &input_image);
+
+  void drawLabel(cv::Mat &input_image, std::string label, int left, int top);
 
   void resetDetector();
 

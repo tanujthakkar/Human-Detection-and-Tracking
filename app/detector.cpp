@@ -4,86 +4,44 @@
 
 #include <fstream>
 
-// TODO: move to appropriate class
-const float FONT_SCALE = 0.7;
-const int FONT_FACE = cv::FONT_HERSHEY_SIMPLEX;
-const int THICKNESS = 1;
-
-cv::Scalar BLACK = cv::Scalar(0, 0, 0);
-cv::Scalar BLUE = cv::Scalar(255, 178, 50);
-cv::Scalar YELLOW = cv::Scalar(0, 255, 255);
-cv::Scalar RED = cv::Scalar(0, 0, 255);
-
-// TODO: move to appropriate class
-void draw_label(cv::Mat &input_image, std::string label, int left, int top) {
-  // Display the label at the top of the bounding box.
-  int baseLine;
-  cv::Size label_size =
-      cv::getTextSize(label, FONT_FACE, FONT_SCALE, THICKNESS, &baseLine);
-  top = std::max(top, label_size.height);
-  // Top left corner.
-  cv::Point tlc = cv::Point(left, top);
-  // Bottom right corner.
-  cv::Point brc =
-      cv::Point(left + label_size.width, top + label_size.height + baseLine);
-  // Draw white rectangle.
-  cv::rectangle(input_image, tlc, brc, BLACK, cv::FILLED);
-  // Put the label on the black rectangle.
-  cv::putText(input_image, label, cv::Point(left, top + label_size.height),
-              FONT_FACE, FONT_SCALE, YELLOW, THICKNESS);
-}
-
 Detector::Detector() {
-  // load params from config
-  setupDetector();
 }
 
 Detector::~Detector() {}
 
-void Detector::setupDetector() {
-  model_path_ = "./../data/YOLOv5s.onnx";
+void Detector::setInputSize(const cv::Size size){
+  input_width_ = size.width;
+  input_height_ = size.height; 
+}
 
+void Detector::setScoreThreshold(const double score_thresh){
+  score_thresh_ = score_thresh;
+}
+
+void Detector::setConfidenceThreshold(const double conf_thresh){
+  confidence_thresh_ = conf_thresh;
+}
+
+void Detector::setNMSThreshold(const double nms_thresh){
+  nms_thresh_ = nms_thresh;
+}
+
+void Detector::setClassesToDetect(const std::vector<std::string> classes){
+  classes_to_detect_ = classes;
+}
+
+void Detector::setModelPath(const std::string model_path){
+  model_path_ = model_path;
   network_ = cv::dnn::readNet(model_path_);
+}
 
-  input_width_ = 640.0;
-
-  input_height_ = 640.0;
-
-  score_thresh_ = 0.5;
-
-  nms_thresh_ = 0.45;
-
-  confidence_thresh_ = 0.45;
-
-  classes_to_detect_ = {"person"};
-
-  std::string class_names_path = "./../data/coco.names";
-
-  std::ifstream ifs(class_names_path);
+void Detector::setClassList(const std::string class_list_path){
+  std::ifstream ifs(class_list_path);
   std::string line;
   while (getline(ifs, line)) {
     classes_list_.push_back(line);
   }
-}
 
-void Detector::logDetectorInfo() {
-  std::cout << "input_height: " << input_height_;
-  std::cout << "\ninput_width_: " << input_width_;
-  std::cout << "\nscore_thresh_: " << score_thresh_;
-  std::cout << "\nnms_thresh_: " << nms_thresh_;
-  std::cout << "\nconfidence_thresh_: " << confidence_thresh_;
-  std::cout << "\nmodel_path_: " << model_path_;
-  std::cout << "\ntotal classes : " << classes_list_.size() << std::endl;
-}
-
-cv::Mat Detector::preProcess(cv::Mat &input_image) {
-  // Convert to blob.
-  cv::Mat blob;
-  cv::dnn::blobFromImage(input_image, blob, 1. / 255.,
-                         cv::Size(input_width_, input_height_), cv::Scalar(),
-                         true, false);
-
-  return blob;
 }
 
 std::vector<cv::Mat> Detector::runInference(cv::Mat &blob) {
@@ -94,18 +52,16 @@ std::vector<cv::Mat> Detector::runInference(cv::Mat &blob) {
   return outputs;
 }
 
-cv::Mat Detector::detect(cv::Mat &input_image) {
+cv::Mat Detector::detect(cv::Mat &input_blob, cv::Mat &input_image) {
   resetDetector();
-  // call pre_process here
-  // TODO Use Preprocessor class instance
-  cv::Mat blob = preProcess(input_image);
 
-  // call_forward pass here
-  std::vector<cv::Mat> detections = runInference(blob);
+  // Forward Pass
+  std::vector<cv::Mat> detections = runInference(input_blob);
 
-  // call post_process here
+  // Filter low confidence detections and low class scores, and keep only classes_to_detect
   filterDetections(input_image, detections);
 
+  // Non-maximum suppression
   cv::Mat result = NMS(input_image);
 
   return result;
@@ -155,12 +111,11 @@ void Detector::filterDetections(cv::Mat &input_image,
       }
     }
     // Jump to the next row.
-    data += 85;
+    data += dimensions;
   }
 }
 
 cv::Mat Detector::NMS(cv::Mat &input_image) {
-  // Perform Non-Maximum Suppression and draw predictions.
   std::vector<int> indices;
   cv::dnn::NMSBoxes(bboxes_, confidences_, score_thresh_, nms_thresh_, indices);
   for (int i = 0; i < indices.size(); i++) {
@@ -172,14 +127,32 @@ cv::Mat Detector::NMS(cv::Mat &input_image) {
     int height = box.height;
     // Draw bounding box.
     cv::rectangle(input_image, cv::Point(left, top),
-                  cv::Point(left + width, top + height), BLUE, 3 * THICKNESS);
+                  cv::Point(left + width, top + height), cv::Scalar(255, 178, 50), 3);
     // Get the label for the class name and its confidence.
     std::string label = cv::format("%.2f", confidences_[idx]);
     label = classes_list_[class_ids_[idx]] + ":" + label;
     // Draw class labels.
-    draw_label(input_image, label, left, top);
+    drawLabel(input_image, label, left, top);
   }
   return input_image;
+}
+
+void Detector::drawLabel(cv::Mat &input_image, std::string label, int left, int top) {
+  // Display the label at the top of the bounding box.
+  int baseLine;
+  cv::Size label_size =
+      cv::getTextSize(label, cv::FONT_HERSHEY_SIMPLEX, 0.7, 1, &baseLine);
+  top = std::max(top, label_size.height);
+  // Top left corner.
+  cv::Point tlc = cv::Point(left, top);
+  // Bottom right corner.
+  cv::Point brc =
+      cv::Point(left + label_size.width, top + label_size.height + baseLine);
+  // Draw white rectangle.
+  cv::rectangle(input_image, tlc, brc, cv::Scalar(0, 0, 0), cv::FILLED);
+  // Put the label on the black rectangle.
+  cv::putText(input_image, label, cv::Point(left, top + label_size.height),
+              cv::FONT_HERSHEY_SIMPLEX, 0.7, cv::Scalar(0, 255, 255), 1);
 }
 
 void Detector::resetDetector() {
