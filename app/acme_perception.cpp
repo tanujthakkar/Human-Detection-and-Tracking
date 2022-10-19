@@ -52,13 +52,12 @@ AcmePerception::AcmePerception(std::string& mode, std::string& input_path,
   // set NMS threshold
   detector_.setNMSThreshold(0.5);
   // set list of classes to be detected by model
-  std::vector<std::string> classes {
-    "person";
-    detector_.setClassesToDetect(classes);
-    // set model path of detector
-    detector_.setModelPath("./../data/models/YOLOv5s.onnx");
-    // set list of all class labels detected by detector
-    detector_.setClassList("./../data/models/coco.names");
+  std::vector<std::string> classes {"person"};
+  detector_.setClassesToDetect(classes);
+  // set model path of detector
+  detector_.setModelPath("./../data/models/YOLOv5s.onnx");
+  // set list of all class labels detected by detector
+  detector_.setClassList("./../data/models/coco.names");
   }
 
   // Destructor of AcmePerception object
