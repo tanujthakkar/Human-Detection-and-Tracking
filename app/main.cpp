@@ -5,27 +5,18 @@
 #include <opencv2/opencv.hpp>
 
 #include "detector.hpp"
+#include "data.hpp"
+#include "preprocessor.hpp"
+#include "acme_perception.hpp"
+
 
 int main(int argc, char **argv) {
-  Detector detector;
 
-  detector.logDetectorInfo();
+  std::string mode = "images";
+  std::string input= "./../data/test/";
+  std::string output= "./../data/test/test_output";
 
-  cv::Mat frame;
-  frame = cv::imread("./../data/traffic.jpg");
-  cv::Mat output = detector.detect(frame);
-  cv::imshow("final output", output);
-  cv::waitKey(0);
-
-  frame = cv::imread("./../data/1.jpg");
-  output = detector.detect(frame);
-  cv::imshow("final output", output);
-  cv::waitKey(0);
-
-  frame = cv::imread("./../data/car.jpg");
-  output = detector.detect(frame);
-  cv::imshow("final output", output);
-  cv::waitKey(0);
-
+  AcmePerception acme(mode, input, output);
+  acme.processInputs();
   return 0;
 }
