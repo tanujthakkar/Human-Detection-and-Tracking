@@ -9,9 +9,13 @@ class Data {
  public:
   Data(std::string& mode, std::string& input_path, std::string& output_path);
 
+  Data();
+
   ~Data();
 
-  // void setInputMode(std::string& mode);
+  void setInputMode(std::string& mode);
+
+  void setIOpaths(std::string& input_path, std::string& output_path);
 
   std::string getInputMode();
 

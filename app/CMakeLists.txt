@@ -7,6 +7,7 @@ set(app_src
     data.cpp
     detector.cpp
     preprocessor.cpp
+    acme_perception.cpp
 
     main.cpp)
 

@@ -1,4 +1,6 @@
-#include "data.hpp"
+#include <data.hpp>
+
+Data::Data() {}
 
 Data::Data(std::string& mode, std::string& input_path, std::string& output_path)
     : mode_(mode), inputs_path_(input_path), outputs_path_(output_path) {
@@ -27,6 +29,15 @@ Data::~Data() {
   }
 }
 
+void Data::setInputMode(std::string& mode) { mode_ = mode; }
+
+void Data::setIOpaths(std::string& input_path, std::string& output_path) {
+  inputs_path_ = input_path;
+  outputs_path_ = output_path;
+  if (mode_ == "images") {
+    cv::glob(inputs_path_, inputs_list_);
+  }
+}
 std::string Data::getInputMode() { return mode_; }
 
 cv::Mat Data::getInput() {
