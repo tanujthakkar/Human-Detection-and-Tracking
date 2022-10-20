@@ -67,7 +67,7 @@ The tracked objects are then transformed to obtain their positions with respect 
 ## Project Design
 <ul>
     <li><a href='https://github.com/tanujthakkar/Human-Detection-and-Tracking/blob/master/UML/revised/UML%20Class%20Diagram.png' >UML Class Diagram</a></li>
-    <li><a href='https://github.com/tanujthakkar/Human-Detection-and-Tracking/blob/master/UML/UML%20Activity%20Diagram.png' >UML Activity Diagram</a></li>
+    <li><a href='https://github.com/tanujthakkar/Human-Detection-and-Tracking/blob/master/UML/initial/UML%20Activity%20Diagram.png' >UML Activity Diagram</a></li>
     <li><a href='https://github.com/tanujthakkar/Human-Detection-and-Tracking/blob/master/Proposal/Quadchart.png' >Quadchart</a></li>
 </ul>
 
