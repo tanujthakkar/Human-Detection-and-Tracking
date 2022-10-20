@@ -66,7 +66,7 @@ The tracked objects are then transformed to obtain their positions with respect 
 
 ## Project Design
 <ul>
-    <li><a href='https://github.com/tanujthakkar/Human-Detection-and-Tracking/blob/master/UML/UML%20Class%20Diagram.png' >UML Class Diagram</a></li>
+    <li><a href='https://github.com/tanujthakkar/Human-Detection-and-Tracking/blob/master/UML/revised/UML%20Class%20Diagram.png' >UML Class Diagram</a></li>
     <li><a href='https://github.com/tanujthakkar/Human-Detection-and-Tracking/blob/master/UML/UML%20Activity%20Diagram.png' >UML Activity Diagram</a></li>
     <li><a href='https://github.com/tanujthakkar/Human-Detection-and-Tracking/blob/master/Proposal/Quadchart.png' >Quadchart</a></li>
 </ul>
@@ -104,6 +104,6 @@ The tracked objects are then transformed to obtain their positions with respect 
     </ul>
     <li>Phase 1</li>
     <ul>
-        <li><a href='' >Video</a></li>
+        <li><a href='https://drive.google.com/file/d/1rZQk-GdYQfyh0IcFAtmXDycsm62yBIaS/view?usp=sharing' >Video</a></li>
     </ul>
 </ul>
