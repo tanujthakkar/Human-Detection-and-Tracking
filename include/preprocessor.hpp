@@ -33,8 +33,8 @@ SOFTWARE.
  *
  *
  */
-#ifndef INCLUDE_PREPROCESSOR_H
-#define INCLUDE_PREPROCESSOR_H
+#ifndef INCLUDE_PREPROCESSOR_HPP_
+#define INCLUDE_PREPROCESSOR_HPP_
 
 #include <opencv2/dnn/dnn.hpp>
 #include <opencv2/opencv.hpp>
@@ -59,7 +59,7 @@ class Preprocessor {
    * @param input_image
    * @return cv::Mat
    */
-  cv::Mat preProcess(cv::Mat& input_image);
+  cv::Mat preProcess(const cv::Mat& input_image);
 
   /**
    * @brief Get the input size required by the detector model
@@ -73,4 +73,4 @@ class Preprocessor {
   cv::Size input_size_;
 };
 
-#endif
+#endif  // INCLUDE_PREPROCESSOR_HPP_

@@ -37,51 +37,46 @@ SOFTWARE.
 
 // Constuctor for initializing object with input mode, input path, and output
 // path
-AcmePerception::AcmePerception(std::string& mode, std::string& input_path,
-                               std::string& output_path) {
+AcmePerception::AcmePerception(const std::string& mode,
+                               const std::string& input_path,
+                               const std::string& output_path,
+                               const bool& save_data) {
   // set data input mode to images or stream
   data_.setInputMode(mode);
   // set input and outpath path dir
   data_.setIOpaths(input_path, output_path);
-  // set size of input for the detector model
-  detector_.setInputSize(cv::Size(640, 640));
-  // set score threshold for detections
-  detector_.setScoreThreshold(0.5);
-  // set confidence threshold for detections
-  detector_.setConfidenceThreshold(0.45);
-  // set NMS threshold
-  detector_.setNMSThreshold(0.5);
   // set list of classes to be detected by model
-  std::vector<std::string> classes {"person"};
+  std::vector<std::string> classes{"person"};
   detector_.setClassesToDetect(classes);
   // set model path of detector
   detector_.setModelPath("./../data/models/YOLOv5s.onnx");
   // set list of all class labels detected by detector
   detector_.setClassList("./../data/models/coco.names");
-  }
+  // bool to check if output is saved
+  save_data_ = save_data;
+}
 
-  // Destructor of AcmePerception object
-  AcmePerception::~AcmePerception() {}
+// Destructor of AcmePerception object
+AcmePerception::~AcmePerception() {}
 
-  // function for running detection and tracking
-  void AcmePerception::processInputs() {
-    cv::Mat img, output;
-    bool save_output = false;
-    int counter = 0;
-    while (cv::waitKey(1) != 27) {
-      img = data_.getInput();
-      if (img.empty()) {
-        std::cout << "empty image found, exiting";
-        break;
-      }
-      cv::Mat blob = preprocessor_.preProcess(img);
-      output = detector_.detect(blob, img);
+// function for running detection and tracking
+void AcmePerception::processInputs() {
+  cv::Mat img, output;
+  int counter = 0;
+  while (cv::waitKey(1) != 27) {
+    img = data_.getInput();
+    if (img.empty()) {
+      std::cout << "empty image found, exiting";
+      break;
+    }
+    cv::Mat blob = preprocessor_.preProcess(img);
+    output = detector_.detect(blob, img);
 
-      cv::imshow("output", output);
-      cv::waitKey(0);
-      if (save_output) {
-        data_.writeData(output, std::to_string(counter));
-        counter += 1;
-      }
+    cv::imshow("output", output);
+    cv::waitKey(0);
+    if (save_data_) {
+      data_.writeData(output, std::to_string(counter));
+      counter += 1;
     }
   }
+}

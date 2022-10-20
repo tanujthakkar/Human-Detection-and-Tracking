@@ -33,9 +33,10 @@ SOFTWARE.
  *
  *
  */
-#ifndef INCLUDE_ACME_PERCEPTION_HPP
-#define INCLUDE_ACME_PERCEPTION_HPP
+#ifndef INCLUDE_ACME_PERCEPTION_HPP_
+#define INCLUDE_ACME_PERCEPTION_HPP_
 
+#include<string>
 #include <data.hpp>
 #include <detector.hpp>
 #include <preprocessor.hpp>
@@ -49,8 +50,8 @@ class AcmePerception {
    * @param input_path path to dir of inputs if mode is"images"
    * @param output_path path to dir for saving outputs
    */
-  AcmePerception(std::string& mode, std::string& input_path,
-                 std::string& output_path);
+  AcmePerception(const std::string& mode, const std::string& input_path,
+                 const std::string& output_path, const bool& save_data);
 
   /**
    * @brief Destrctor for AcmePerception object
@@ -83,6 +84,9 @@ class AcmePerception {
    */
 
   Data data_;
+
+  // To record the input
+  bool save_data_;
 };
 
-#endif
+#endif  // INCLUDE_ACME_PERCEPTION_HPP_

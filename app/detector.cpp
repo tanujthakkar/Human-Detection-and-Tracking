@@ -33,14 +33,13 @@ SOFTWARE.
  *
  *
  */
-#include "detector.hpp"
-
 #include <unistd.h>
-
 #include <fstream>
+#include <detector.hpp>
 
 // Constructor
-Detector::Detector() {}
+Detector::Detector(): input_width_(640.0), input_height_(640.0),
+          score_thresh_(0.5), nms_thresh_(0.5), confidence_thresh_(0.45) {}
 
 // Destructor
 Detector::~Detector() {}
@@ -67,18 +66,18 @@ void Detector::setNMSThreshold(const double nms_thresh) {
 }
 
 // set all classes to detect by detector model
-void Detector::setClassesToDetect(const std::vector<std::string> classes) {
+void Detector::setClassesToDetect(const std::vector<std::string>& classes) {
   classes_to_detect_ = classes;
 }
 
 // set model path of detector and initialize detector model
-void Detector::setModelPath(const std::string model_path) {
+void Detector::setModelPath(const std::string& model_path) {
   model_path_ = model_path;
   network_ = cv::dnn::readNet(model_path_);
 }
 
 // set classes_list_ from class_list_path containing all classes of detection
-void Detector::setClassList(const std::string class_list_path) {
+void Detector::setClassList(const std::string& class_list_path) {
   std::ifstream ifs(class_list_path);
   std::string line;
   while (getline(ifs, line)) {
@@ -87,7 +86,7 @@ void Detector::setClassList(const std::string class_list_path) {
 }
 
 // forward pass of detector model
-std::vector<cv::Mat> Detector::runInference(cv::Mat &blob) {
+std::vector<cv::Mat> Detector::runInference(const cv::Mat &blob) {
   std::vector<cv::Mat> outputs;
   network_.setInput(blob);
   network_.forward(outputs, network_.getUnconnectedOutLayersNames());
@@ -96,7 +95,8 @@ std::vector<cv::Mat> Detector::runInference(cv::Mat &blob) {
 }
 
 // run inference, filter detections, NMS and drawing outputs
-cv::Mat Detector::detect(cv::Mat &input_blob, cv::Mat &input_image) {
+cv::Mat Detector::detect(const cv::Mat &input_blob,
+                         const cv::Mat &input_image) {
   // clear all values of previous detection
   resetDetector();
 
@@ -113,12 +113,12 @@ cv::Mat Detector::detect(cv::Mat &input_blob, cv::Mat &input_image) {
   return result;
 }
 
-void Detector::filterDetections(cv::Mat &input_image,
-                                std::vector<cv::Mat> &outputs) {
+void Detector::filterDetections(const cv::Mat &input_image,
+                                const std::vector<cv::Mat> &outputs) {
   // Resizing factor used in preprocessing for drawing bbox on original image
   float ratio_x = input_image.cols / input_width_;
   float ratio_y = input_image.rows / input_height_;
-  float *data = (float *)outputs[0].data;
+  float *data = reinterpret_cast<float *>(outputs[0].data);
   // total rows in a detection: bbox coordinates(4), confidence, class scores
   // (80)
   const int dimensions = 85;
@@ -154,10 +154,10 @@ void Detector::filterDetections(cv::Mat &input_image,
         float w = data[2];
         float h = data[3];
         // bbox coordinates
-        int left = int((cx - 0.5 * w) * ratio_x);
-        int top = int((cy - 0.5 * h) * ratio_y);
-        int width = int(w * ratio_x);
-        int height = int(h * ratio_y);
+        int left = static_cast<int>((cx - 0.5 * w) * ratio_x);
+        int top = static_cast<int>((cy - 0.5 * h) * ratio_y);
+        int width = static_cast<int>(w * ratio_x);
+        int height = static_cast<int>(h * ratio_y);
         bboxes_.push_back(cv::Rect(left, top, width, height));
       }
     }
@@ -168,10 +168,10 @@ void Detector::filterDetections(cv::Mat &input_image,
 
 // perform Non-maximum-suppression and draw bbox, confidence, labels for
 // NMS-filtered bboxes
-cv::Mat Detector::NMS(cv::Mat &input_image) {
+cv::Mat Detector::NMS(const cv::Mat &input_image) {
   std::vector<int> indices;
   cv::dnn::NMSBoxes(bboxes_, confidences_, score_thresh_, nms_thresh_, indices);
-  for (int i = 0; i < indices.size(); i++) {
+  for (size_t i = 0; i < indices.size(); i++) {
     int idx = indices[i];
     cv::Rect box = bboxes_[idx];
     int left = box.x;
@@ -193,8 +193,8 @@ cv::Mat Detector::NMS(cv::Mat &input_image) {
 }
 
 // draw output image
-void Detector::drawLabel(cv::Mat &input_image, std::string label, int left,
-                         int top) {
+void Detector::drawLabel(const cv::Mat &input_image, std::string label,
+                        int left, int top) {
   int baseLine;
   cv::Size label_size =
       cv::getTextSize(label, cv::FONT_HERSHEY_SIMPLEX, 0.7, 1, &baseLine);

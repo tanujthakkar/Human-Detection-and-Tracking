@@ -36,9 +36,10 @@ SOFTWARE.
 #ifndef INCLUDE_DATA_HPP_
 #define INCLUDE_DATA_HPP_
 
+#include <string>
+#include <vector>
 #include <iostream>
 #include <opencv2/opencv.hpp>
-#include <string>
 
 class Data {
  public:
@@ -49,7 +50,8 @@ class Data {
    * @param input_path path to dir of inputs
    * @param output_path path to dir for saving outputs
    */
-  Data(std::string& mode, std::string& input_path, std::string& output_path);
+  Data(const std::string& mode, const std::string& input_path,
+       const std::string& output_path);
 
   /**
    * @brief Constructor for Data object
@@ -68,7 +70,7 @@ class Data {
    *
    * @param mode images/stream
    */
-  void setInputMode(std::string& mode);
+  void setInputMode(const std::string& mode);
 
   /**
    * @brief Set paths to input dir and output dir
@@ -76,7 +78,8 @@ class Data {
    * @param input_path
    * @param output_path
    */
-  void setIOpaths(std::string& input_path, std::string& output_path);
+  void setIOpaths(const std::string& input_path,
+                  const std::string& output_path);
 
   /**
    * @brief Get the input Mode: images/stream
@@ -99,7 +102,7 @@ class Data {
    * @param output image to write
    * @param name name of output
    */
-  void writeData(cv::Mat output, std::string name);
+  void writeData(cv::Mat output, const std::string& name);
 
  private:
   // Input mode
@@ -132,4 +135,4 @@ class Data {
   cv::Mat readStream();
 };
 
-#endif
+#endif  // INCLUDE_DATA_HPP_

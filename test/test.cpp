@@ -36,9 +36,9 @@ SOFTWARE.
 
 #include <gtest/gtest.h>
 
-#include "data.hpp"
-#include "detector.hpp"
-#include "preprocessor.hpp"
+#include <data.hpp>
+#include <detector.hpp>
+#include <preprocessor.hpp>
 
 TEST(Detector, setInputSize) {
   Detector detector;
@@ -138,4 +138,10 @@ TEST(Data, writeData2) {
   Data data(s, s, s);
   cv::Mat img(320, 240, CV_8UC3, cv::Scalar(0, 0, 0));
   ASSERT_NO_THROW(data.writeData(img, s));
+}
+
+TEST(Data, checkgetInput) {
+  std::string s = "images";
+  Data data(s, s, s);
+  ASSERT_EQ(data.getInputMode(), s);
 }

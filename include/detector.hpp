@@ -36,9 +36,10 @@ SOFTWARE.
 #ifndef INCLUDE_DETECTOR_HPP_
 #define INCLUDE_DETECTOR_HPP_
 
+#include <string>
+#include <vector>
 #include <opencv2/dnn/dnn.hpp>
 #include <opencv2/opencv.hpp>
-#include <string>
 
 class Detector {
  public:
@@ -62,7 +63,7 @@ class Detector {
    * @return cv::Mat output image with labels, bounding box and confidence
    * scores
    */
-  cv::Mat detect(cv::Mat &input_blob, cv::Mat &input_image);
+  cv::Mat detect(const cv::Mat &input_blob, const cv::Mat &input_image);
 
   /**
    * @brief Set the Input Size for detection model
@@ -97,21 +98,21 @@ class Detector {
    *
    * @param classes vector<string> containing list of classes to detect
    */
-  void setClassesToDetect(const std::vector<std::string> classes);
+  void setClassesToDetect(const std::vector<std::string>& classes);
 
   /**
    * @brief Set the detector model path
    *
    * @param model_path path to model
    */
-  void setModelPath(const std::string model_path);
+  void setModelPath(const std::string& model_path);
 
   /**
    * @brief Populate list of all classes for the detector model
    *
    * @param class_list_path
    */
-  void setClassList(const std::string class_list_path);
+  void setClassList(const std::string& class_list_path);
 
  private:
   /**
@@ -121,7 +122,8 @@ class Detector {
    * @param input_image
    * @param outputs
    */
-  void filterDetections(cv::Mat &input_image, std::vector<cv::Mat> &outputs);
+  void filterDetections(const cv::Mat &input_image,
+                    const std::vector<cv::Mat> &outputs);
 
   /**
    * @brief Forward pass through the detector model
@@ -129,7 +131,7 @@ class Detector {
    * @param blob input blob generated from input image
    * @return std::vector<cv::Mat>
    */
-  std::vector<cv::Mat> runInference(cv::Mat &blob);
+  std::vector<cv::Mat> runInference(const cv::Mat &blob);
 
   /**
    * @brief Perform Non-maximum-suppression to filter overlapping boxes
@@ -137,7 +139,7 @@ class Detector {
    * @param input_image
    * @return cv::Mat
    */
-  cv::Mat NMS(cv::Mat &input_image);
+  cv::Mat NMS(const cv::Mat &input_image);
 
   /**
    * @brief draw the result of detections with bounding boxes, labels, and
@@ -148,7 +150,8 @@ class Detector {
    * @param left bounding box left coordinate
    * @param top bounding box top coordinate
    */
-  void drawLabel(cv::Mat &input_image, std::string label, int left, int top);
+  void drawLabel(const cv::Mat &input_image, std::string label,
+                int left, int top);
 
   /**
    * @brief clear variables stored after a detection: bounding box vectors,
@@ -194,4 +197,4 @@ class Detector {
   std::vector<std::string> classes_to_detect_;
 };
 
-#endif
+#endif  // INCLUDE_DETECTOR_HPP_

@@ -48,14 +48,13 @@ Data::Data() {}
  * @param input_path input images dir
  * @param output_path output dir
  */
-Data::Data(std::string& mode, std::string& input_path, std::string& output_path)
+Data::Data(const std::string& mode, const std::string& input_path,
+           const std::string& output_path)
     : mode_(mode), inputs_path_(input_path), outputs_path_(output_path) {
   if (mode_ == "images") {
     // populate list of images from input dir
     cv::glob(inputs_path_, inputs_list_);
-  }
-
-  else if (mode_ == "stream") {
+  } else if (mode_ == "stream") {
     // Open VideoCapture object
     cap_.open(0);
     // width of frame
@@ -82,10 +81,11 @@ Data::~Data() {
 }
 
 // set input mode to either images or stream
-void Data::setInputMode(std::string& mode) { mode_ = mode; }
+void Data::setInputMode(const std::string& mode) { mode_ = mode; }
 
 // set input and output paths
-void Data::setIOpaths(std::string& input_path, std::string& output_path) {
+void Data::setIOpaths(const std::string& input_path,
+                      const std::string& output_path) {
   inputs_path_ = input_path;
   outputs_path_ = output_path;
   if (mode_ == "images") {
@@ -103,10 +103,9 @@ cv::Mat Data::getInput() {
     return readImage();
   } else if (mode_ == "stream") {
     return readStream();
-  }
-
-  else
+  } else {
     return cv::Mat();
+  }
 }
 
 // read image from dir
@@ -125,7 +124,7 @@ cv::Mat Data::readStream() {
 }
 
 // save output image with a specified name
-void Data::writeData(cv::Mat output, std::string name) {
+void Data::writeData(cv::Mat output, const std::string& name) {
   if (mode_ == "images") {
     cv::imwrite(outputs_path_ + name + ".jpg", output);
   } else if (mode_ == "stream") {
