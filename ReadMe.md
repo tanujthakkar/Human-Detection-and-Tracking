@@ -11,11 +11,6 @@ Human detection and tracking module writtern in C++. The module is based on YOLO
     <li>Tanuj Thakkar (UID - 117817539)</li>
 </ul>
 
-## Table of Contents
-<ul>
-<li>[Overview](#overview)</li>
-</ul>
-
 ## Overview
 Real-time obstacle detection is necessary for robot motion in dynamic environments so that the robot has enough time to actively avoid the obstacle.
 We propose a module that can detect humans and track their movement, in robot reference frame, over time for this purpose. For the detection, we adopt a deep learning approach and use the YOLOv5 architecture, which is able to detect humans in real time and with high accuracy. Our module can be extended to detect and track any number of classes, although for our application, we only detect the "person" class. The input to the detection module is from a monocular camera. 
@@ -34,7 +29,9 @@ The tracked objects are then transformed to obtain their positions with respect 
 ## Instructions
 
 ### Dependencies
-
+```
+    sh requirements.sh
+```
 ### Build and Compile
 ```
     sh build.sh
