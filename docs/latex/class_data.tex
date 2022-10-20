@@ -1,0 +1,155 @@
+\hypertarget{class_data}{}\doxysection{Data Class Reference}
+\label{class_data}\index{Data@{Data}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_data_a3ad43ef916c595ba4bbb15a1900916e8}{Data}} (const std\+::string \&mode, const std\+::string \&input\+\_\+path, const std\+::string \&output\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{class_data}{Data}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_data_af11f741cb7f587e2e495452a8905a22a}{Data}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{class_data}{Data}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_data_aab31956423290f0d62dcca47ab4d16dd}{$\sim$\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \mbox{\hyperlink{class_data}{Data}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_a0e99937baf10514f49dd02e217c5ba77}{set\+Input\+Mode}} (const std\+::string \&mode)
+\begin{DoxyCompactList}\small\item\em Set the Input mode for processing. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_abf2e9056bd8e5601f8cb4364a44fc0a6}{set\+I\+Opaths}} (const std\+::string \&input\+\_\+path, const std\+::string \&output\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Set paths to input dir and output dir. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_data_af6ce45fefa37106c721f751857b5802e}{get\+Input\+Mode}} ()
+\begin{DoxyCompactList}\small\item\em Get the input Mode\+: images/stream. \end{DoxyCompactList}\item 
+cv\+::\+Mat \mbox{\hyperlink{class_data_a01eb0350ae35afefd2bffbf703e3e953}{get\+Input}} ()
+\begin{DoxyCompactList}\small\item\em Get image for processing from either a image dir or a stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_data_a806f755c133949929fc6599f5ec47038}{write\+Data}} (cv\+::\+Mat output, const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em write output to output dir\+: images or make video file if mode==\char`\"{}stream\char`\"{} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_data_a3ad43ef916c595ba4bbb15a1900916e8}\label{class_data_a3ad43ef916c595ba4bbb15a1900916e8}} 
+\index{Data@{Data}!Data@{Data}}
+\index{Data@{Data}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{Data()}{Data()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Data\+::\+Data (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{mode,  }\item[{const std\+::string \&}]{input\+\_\+path,  }\item[{const std\+::string \&}]{output\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Constructor for \mbox{\hyperlink{class_data}{Data}} object. 
+
+Constructor for \mbox{\hyperlink{class_data}{Data}} object with mode, input and output paths.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & input mode. Valid modes\+: \char`\"{}images\char`\"{}, \char`\"{}stream\char`\"{} \\
+\hline
+{\em input\+\_\+path} & path to dir of inputs \\
+\hline
+{\em output\+\_\+path} & path to dir for saving outputs\\
+\hline
+{\em mode} & images/stream \\
+\hline
+{\em input\+\_\+path} & input images dir \\
+\hline
+{\em output\+\_\+path} & output dir \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_data_af11f741cb7f587e2e495452a8905a22a}\label{class_data_af11f741cb7f587e2e495452a8905a22a}} 
+\index{Data@{Data}!Data@{Data}}
+\index{Data@{Data}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{Data()}{Data()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Data\+::\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor for \mbox{\hyperlink{class_data}{Data}} object. 
+
+\mbox{\Hypertarget{class_data_aab31956423290f0d62dcca47ab4d16dd}\label{class_data_aab31956423290f0d62dcca47ab4d16dd}} 
+\index{Data@{Data}!````~Data@{$\sim$Data}}
+\index{````~Data@{$\sim$Data}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{$\sim$Data()}{~Data()}}
+{\footnotesize\ttfamily Data\+::$\sim$\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor for \mbox{\hyperlink{class_data}{Data}} object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_data_a01eb0350ae35afefd2bffbf703e3e953}\label{class_data_a01eb0350ae35afefd2bffbf703e3e953}} 
+\index{Data@{Data}!getInput@{getInput}}
+\index{getInput@{getInput}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{getInput()}{getInput()}}
+{\footnotesize\ttfamily cv\+::\+Mat Data\+::get\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get image for processing from either a image dir or a stream. 
+
+\begin{DoxyReturn}{Returns}
+cv\+::\+Mat image 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_data_af6ce45fefa37106c721f751857b5802e}\label{class_data_af6ce45fefa37106c721f751857b5802e}} 
+\index{Data@{Data}!getInputMode@{getInputMode}}
+\index{getInputMode@{getInputMode}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{getInputMode()}{getInputMode()}}
+{\footnotesize\ttfamily std\+::string Data\+::get\+Input\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the input Mode\+: images/stream. 
+
+\begin{DoxyReturn}{Returns}
+std\+::string mode\+:images/stream 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_data_a0e99937baf10514f49dd02e217c5ba77}\label{class_data_a0e99937baf10514f49dd02e217c5ba77}} 
+\index{Data@{Data}!setInputMode@{setInputMode}}
+\index{setInputMode@{setInputMode}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{setInputMode()}{setInputMode()}}
+{\footnotesize\ttfamily void Data\+::set\+Input\+Mode (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{mode }\end{DoxyParamCaption})}
+
+
+
+Set the Input mode for processing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & images/stream \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_data_abf2e9056bd8e5601f8cb4364a44fc0a6}\label{class_data_abf2e9056bd8e5601f8cb4364a44fc0a6}} 
+\index{Data@{Data}!setIOpaths@{setIOpaths}}
+\index{setIOpaths@{setIOpaths}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{setIOpaths()}{setIOpaths()}}
+{\footnotesize\ttfamily void Data\+::set\+I\+Opaths (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{input\+\_\+path,  }\item[{const std\+::string \&}]{output\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Set paths to input dir and output dir. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+path} & \\
+\hline
+{\em output\+\_\+path} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_data_a806f755c133949929fc6599f5ec47038}\label{class_data_a806f755c133949929fc6599f5ec47038}} 
+\index{Data@{Data}!writeData@{writeData}}
+\index{writeData@{writeData}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{writeData()}{writeData()}}
+{\footnotesize\ttfamily void Data\+::write\+Data (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{output,  }\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+write output to output dir\+: images or make video file if mode==\char`\"{}stream\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & image to write \\
+\hline
+{\em name} & name of output \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/nitesh/\+Desktop/backups/\+Human-\/\+Detection-\/and-\/\+Tracking/include/\mbox{\hyperlink{data_8hpp}{data.\+hpp}}\item 
+/home/nitesh/\+Desktop/backups/\+Human-\/\+Detection-\/and-\/\+Tracking/app/\mbox{\hyperlink{data_8cpp}{data.\+cpp}}\end{DoxyCompactItemize}

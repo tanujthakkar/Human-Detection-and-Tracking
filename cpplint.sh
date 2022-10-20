@@ -1,0 +1,1 @@
+cpplint $( find . -name *.cpp -or -name *.hpp | grep -vE -e "^./build/" -e "^./vendor/" ) > results/cpplint.txt

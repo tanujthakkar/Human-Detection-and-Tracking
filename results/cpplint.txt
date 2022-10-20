@@ -1,0 +1,11 @@
+Done processing ./app/acme_perception.cpp
+Done processing ./app/data.cpp
+Done processing ./app/detector.cpp
+Done processing ./app/main.cpp
+Done processing ./app/preprocessor.cpp
+Done processing ./include/acme_perception.hpp
+Done processing ./include/data.hpp
+Done processing ./include/detector.hpp
+Done processing ./include/preprocessor.hpp
+Done processing ./test/main.cpp
+Done processing ./test/test.cpp

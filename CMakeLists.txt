@@ -1,11 +1,18 @@
 cmake_minimum_required(VERSION 3.2.1)
-project (scratch)
+project (app)
 
 # Add project cmake modules to path.
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake)
 
 # We probably don't want this to run on every build.
 option(COVERAGE "Generate Coverage Data" OFF)
+
+find_package(OpenCV REQUIRED)
+
+INCLUDE_DIRECTORIES(
+    ${OpenCV_INCLUDE_DIRS})
+
+message(STATUS "OpenCV_DIR = $(OpenCV_DIR)")
 
 if (COVERAGE)
     include(CodeCoverage)
