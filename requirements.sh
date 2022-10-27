@@ -32,7 +32,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D WITH_CUDA=OFF \
       -D CMAKE_INSTALL_PREFIX=/usr/local ..
       
-make 
+make -j4
 sudo make install
 sudo sh -c 'echo "/usr/local/lib" >> /etc/ld.so.conf.d/opencv.conf'
 sudo ldconfig
