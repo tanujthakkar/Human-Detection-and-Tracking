@@ -12,7 +12,7 @@ set(app_src
     main.cpp)
 
 add_library(app_lib ${app_src})
-add_executable(app main.cpp)
-target_link_libraries(app
+add_executable(acme_perception main.cpp)
+target_link_libraries(acme_perception
     app_lib
     ${OpenCV_LIBS})
