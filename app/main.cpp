@@ -47,8 +47,8 @@ SOFTWARE.
 
 int main() {
   const std::string mode = "images";
-  const std::string input = "./../data/test/";
-  const std::string output = "./../data/test/test_output";
+  const std::string input = "./data/test/";
+  const std::string output = "./data/test/test_output";
   const bool save_data = false;
   AcmePerception acme(mode, input, output, save_data);
   acme.processInputs();
