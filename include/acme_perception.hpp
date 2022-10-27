@@ -37,6 +37,8 @@ SOFTWARE.
 #define INCLUDE_ACME_PERCEPTION_HPP_
 
 #include<string>
+#include <vector>
+#include <utility>
 #include <data.hpp>
 #include <detector.hpp>
 #include <preprocessor.hpp>
@@ -64,6 +66,16 @@ class AcmePerception {
    *
    */
   void processInputs();
+
+  /**
+   * @brief Draw output of detection and tracking
+   * 
+   * @param input_image 
+   * @param boxes 
+   * @return cv::Mat 
+   */
+  cv::Mat drawLabel(const cv::Mat& input_image,
+                  std::vector<std::pair<cv::Rect, float>> boxes);
 
  private:
   /**

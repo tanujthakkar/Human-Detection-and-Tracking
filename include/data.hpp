@@ -82,6 +82,12 @@ class Data {
                   const std::string& output_path);
 
   /**
+   * @brief Set up data members for reading and writing data
+   * 
+   */
+  void initialize();
+
+  /**
    * @brief Get the input Mode: images/stream
    *
    * @return std::string mode:images/stream

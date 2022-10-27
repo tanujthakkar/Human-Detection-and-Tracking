@@ -35,6 +35,27 @@ SOFTWARE.
  */
 #include <acme_perception.hpp>
 
+cv::Mat AcmePerception::drawLabel(const cv::Mat& input_image,
+                  std::vector<std::pair<cv::Rect, float>> result) {
+  for (size_t i = 0; i < result.size(); ++i) {
+    cv::Rect box = result[i].first;
+    cv::Point tlc = cv::Point(box.x, box.y);
+    // bottom right corner
+    cv::Point brc = cv::Point(box.x + box.width, box.y + box.height);
+    // draw rectangle for text.
+    cv::rectangle(input_image, cv::Point(box.x, box.y - 10),
+                  (cv::Point(box.x + box.width, box.y)), cv::Scalar(0, 0, 255),
+                  10);
+    // draw bounding box
+    cv::rectangle(input_image, tlc, brc, cv::Scalar(0, 0, 255), 5);
+    // put the label on the black rectangle
+    cv::putText(input_image, std::to_string(result[i].second),
+                cv::Point(box.x, box.y), cv::FONT_HERSHEY_SIMPLEX, 0.7,
+                cv::Scalar(255, 255, 255), 2);
+  }
+  return input_image;
+}
+
 // Constuctor for initializing object with input mode, input path, and output
 // path
 AcmePerception::AcmePerception(const std::string& mode,
@@ -45,6 +66,8 @@ AcmePerception::AcmePerception(const std::string& mode,
   data_.setInputMode(mode);
   // set input and outpath path dir
   data_.setIOpaths(input_path, output_path);
+  // setup data read and write members
+  data_.initialize();
   // set list of classes to be detected by model
   std::vector<std::string> classes{"person"};
   detector_.setClassesToDetect(classes);
@@ -62,6 +85,8 @@ AcmePerception::~AcmePerception() {}
 // function for running detection and tracking
 void AcmePerception::processInputs() {
   cv::Mat img, output;
+  // vector of bounding boxes and their confidence value
+  std::vector<std::pair<cv::Rect, float>> detections;
   int counter = 0;
   while (cv::waitKey(1) != 27) {
     img = data_.getInput();
@@ -70,10 +95,16 @@ void AcmePerception::processInputs() {
       break;
     }
     cv::Mat blob = preprocessor_.preProcess(img);
-    output = detector_.detect(blob, img);
+    // vector of bboxes and confidence values
+    detections = detector_.detect(blob, img);
+
+    output = drawLabel(img, detections);
 
     cv::imshow("output", output);
-    cv::waitKey(0);
+
+    if (data_.getInputMode() == "images") {
+      cv::waitKey(0);
+    }
     if (save_data_) {
       data_.writeData(output, std::to_string(counter));
       counter += 1;

@@ -51,6 +51,10 @@ Data::Data() {}
 Data::Data(const std::string& mode, const std::string& input_path,
            const std::string& output_path)
     : mode_(mode), inputs_path_(input_path), outputs_path_(output_path) {
+  initialize();
+}
+
+void Data::initialize() {
   if (mode_ == "images") {
     // populate list of images from input dir
     cv::glob(inputs_path_, inputs_list_);
@@ -88,9 +92,6 @@ void Data::setIOpaths(const std::string& input_path,
                       const std::string& output_path) {
   inputs_path_ = input_path;
   outputs_path_ = output_path;
-  if (mode_ == "images") {
-    cv::glob(inputs_path_, inputs_list_);
-  }
 }
 
 // get mode of input
