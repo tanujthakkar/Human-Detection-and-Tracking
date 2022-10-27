@@ -85,6 +85,18 @@ TEST(Detector, setClassList) {
   ASSERT_NO_THROW(detector.setClassList("./../"));
 }
 
+TEST(Detector, detect) {
+  Detector detector;
+  detector.setClassesToDetect({"person"});
+  detector.setModelPath("./../data/models/YOLOv5s.onnx");
+  detector.setClassList("./../data/models/coco.names");
+  Preprocessor preprocessor;
+  cv::Mat img = cv::imread("./../data/test/1.jpg");
+  cv::Mat blob = preprocessor.preProcess(img);
+  std::vector<std::pair<cv::Rect, float>> result = detector.detect(blob, img);
+  ASSERT_EQ((int)result.size(), 1);
+}
+
 TEST(Preprocessor, preProcess1) {
   Preprocessor preprocessor;
   cv::Mat img;
@@ -115,9 +127,12 @@ TEST(Data, getInput1) {
 
 TEST(Data, getInput2) {
   std::string mode = "images";
-  Data data(mode, mode, mode);
+  Data data;
+  data.setInputMode(mode);
+  data.setIOpaths("./../data/test/", "./../data/test_output/");
+  data.initialize();
   cv::Mat img = data.getInput();
-  ASSERT_NE(img.size().height, 100);
+  ASSERT_NE(img.size().height, 0);
 }
 
 TEST(Data, getInput3) {

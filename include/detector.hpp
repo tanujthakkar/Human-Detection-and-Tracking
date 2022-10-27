@@ -38,6 +38,7 @@ SOFTWARE.
 
 #include <string>
 #include <vector>
+#include <utility>
 #include <opencv2/dnn/dnn.hpp>
 #include <opencv2/opencv.hpp>
 
@@ -63,7 +64,8 @@ class Detector {
    * @return cv::Mat output image with labels, bounding box and confidence
    * scores
    */
-  cv::Mat detect(const cv::Mat &input_blob, const cv::Mat &input_image);
+  std::vector<std::pair<cv::Rect, float>> detect(const cv::Mat &input_blob,
+                                                 const cv::Mat &input_image);
 
   /**
    * @brief Set the Input Size for detection model
@@ -98,21 +100,21 @@ class Detector {
    *
    * @param classes vector<string> containing list of classes to detect
    */
-  void setClassesToDetect(const std::vector<std::string>& classes);
+  void setClassesToDetect(const std::vector<std::string> &classes);
 
   /**
    * @brief Set the detector model path
    *
    * @param model_path path to model
    */
-  void setModelPath(const std::string& model_path);
+  void setModelPath(const std::string &model_path);
 
   /**
    * @brief Populate list of all classes for the detector model
    *
    * @param class_list_path
    */
-  void setClassList(const std::string& class_list_path);
+  void setClassList(const std::string &class_list_path);
 
  private:
   /**
@@ -123,7 +125,7 @@ class Detector {
    * @param outputs
    */
   void filterDetections(const cv::Mat &input_image,
-                    const std::vector<cv::Mat> &outputs);
+                        const std::vector<cv::Mat> &outputs);
 
   /**
    * @brief Forward pass through the detector model
@@ -139,19 +141,7 @@ class Detector {
    * @param input_image
    * @return cv::Mat
    */
-  cv::Mat NMS(const cv::Mat &input_image);
-
-  /**
-   * @brief draw the result of detections with bounding boxes, labels, and
-   * confidence scores
-   *
-   * @param input_image image
-   * @param label class label name
-   * @param left bounding box left coordinate
-   * @param top bounding box top coordinate
-   */
-  void drawLabel(const cv::Mat &input_image, std::string label,
-                int left, int top);
+  std::vector<std::pair<cv::Rect, float>> NMS();
 
   /**
    * @brief clear variables stored after a detection: bounding box vectors,
