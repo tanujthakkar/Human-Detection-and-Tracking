@@ -40,20 +40,21 @@ namespace Acme {
 
 Tracker::Tracker() {}
 
-Tracker::~Tracker() { multi_tracker_.clear(); }
+Tracker::~Tracker() { multi_tracker_->clear(); }
 
 void Tracker::track(const cv::Mat& frame,
                     const std::vector<cv::Rect2d>& bboxes) {
-  multi_tracker_.clear();  // Clearing any present trackers
+  multi_tracker_.release();
+  multi_tracker_ = cv::legacy::MultiTracker::create();  // Creating tracker from scratch
   for (auto bbox : bboxes) {
-    multi_tracker_.add(cv::legacy::TrackerKCF::create(), frame, bbox);
+    multi_tracker_->add(cv::legacy::TrackerKCF::create(), frame, bbox);
   }
 }
 
-void Tracker::update(const cv::Mat& frame) { multi_tracker_.update(frame); }
+void Tracker::update(const cv::Mat& frame) { multi_tracker_->update(frame); }
 
 std::vector<cv::Rect2d> Tracker::getObjects() {
-  return multi_tracker_.getObjects();
+  return multi_tracker_->getObjects();
 }
 
 }  // namespace Acme

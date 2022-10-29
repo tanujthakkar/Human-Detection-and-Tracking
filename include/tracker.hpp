@@ -88,7 +88,7 @@ class Tracker {
   std::vector<cv::Rect2d> getObjects();
 
  private:
-  cv::legacy::MultiTracker multi_tracker_;
+  cv::Ptr<cv::legacy::MultiTracker> multi_tracker_;
 };
 
 }  // namespace Acme
