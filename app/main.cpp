@@ -33,24 +33,19 @@ SOFTWARE.
  *
  *
  */
-#include <fstream>
-#include <opencv2/dnn/dnn.hpp>
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/imgproc/imgproc.hpp>
-#include <opencv2/opencv.hpp>
 
-#include <detector.hpp>
-#include <data.hpp>
-#include <preprocessor.hpp>
 #include <acme_perception.hpp>
 
+int main(int argc, char** argv) {
+  if (argc != 5) {
+    std::cout
+        << "\n Usage: ./acme_perception [mode] [input_path] [output_path] "
+           "[save_data]\nInvalid number of arguments. returning..."
+        << std::endl;
+    return 0;
+  }
 
-int main() {
-  const std::string mode = "images";
-  const std::string input = "./data/test/";
-  const std::string output = "./data/test/test_output";
-  const bool save_data = false;
-  AcmePerception acme(mode, input, output, save_data);
-  acme.processInputs();
+  Acme::AcmePerception acme(argv[1], argv[2], argv[3], argv[4]);
+  acme.processInputs(true);
   return 0;
 }
