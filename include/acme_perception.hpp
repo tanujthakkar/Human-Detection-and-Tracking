@@ -72,7 +72,7 @@ class AcmePerception {
    * @brief process input image/stream to obtain detection and track them
    *
    */
-  void processInputs();
+  void processInputs(const bool& visualize);
 
  private:
   /**

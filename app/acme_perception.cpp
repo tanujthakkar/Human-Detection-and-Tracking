@@ -71,7 +71,7 @@ AcmePerception::AcmePerception(const std::string& mode,
 AcmePerception::~AcmePerception() {}
 
 // function for running detection and tracking
-void AcmePerception::processInputs() {
+void AcmePerception::processInputs(const bool& visualize) {
   cv::Mat img;
   cv::Mat output;
   int counter = 0;
@@ -114,7 +114,8 @@ void AcmePerception::processInputs() {
       drawLabel(output, bboxes);
     }
 
-    cv::imshow("Acme Perception", output);  // Display output
+    if(visualize)
+      cv::imshow("Acme Perception", output);  // Display output
 
     if (data_.getInputMode() == "images") {
       cv::waitKey(0);
