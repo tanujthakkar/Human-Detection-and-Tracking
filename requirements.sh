@@ -11,6 +11,8 @@ sudo apt-get install libopencore-amrnb-dev libopencore-amrwb-dev
 sudo apt-get install x264 v4l-utils
 
 # OpenCV
+mkdir opencv_4.6
+cd opencv_4.6
 git clone https://github.com/opencv/opencv.git
 cd opencv 
 git checkout 4.6.0
@@ -29,10 +31,10 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D BUILD_DOCS=OFF \
       -D BUILD_PERF_TESTS=OFF \
       -D BUILD_TESTS=OFF \
-      -D WITH_CUDA=OFF \
+      -D WITH_CUDA=ON \
       -D CMAKE_INSTALL_PREFIX=/usr/local ..
       
-make -j4
+make -j8
 sudo make install
 sudo sh -c 'echo "/usr/local/lib" >> /etc/ld.so.conf.d/opencv.conf'
 sudo ldconfig
