@@ -38,6 +38,8 @@ SOFTWARE.
 #include <detector.hpp>
 
 
+namespace Acme {
+
 // Constructor
 Detector::Detector()
     : input_width_(640.0),
@@ -50,23 +52,23 @@ Detector::Detector()
 Detector::~Detector() {}
 
 // Set size of input required by detector model
-void Detector::setInputSize(const cv::Size size) {
+void Detector::setInputSize(const cv::Size& size) {
   input_width_ = size.width;
   input_height_ = size.height;
 }
 
 // set score threshold
-void Detector::setScoreThreshold(const double score_thresh) {
+void Detector::setScoreThreshold(const double& score_thresh) {
   score_thresh_ = score_thresh;
 }
 
 // set confidence threshold
-void Detector::setConfidenceThreshold(const double conf_thresh) {
+void Detector::setConfidenceThreshold(const double& conf_thresh) {
   confidence_thresh_ = conf_thresh;
 }
 
 // set NMS threshold
-void Detector::setNMSThreshold(const double nms_thresh) {
+void Detector::setNMSThreshold(const double& nms_thresh) {
   nms_thresh_ = nms_thresh;
 }
 
@@ -190,3 +192,5 @@ void Detector::resetDetector() {
   confidences_.clear();
   bboxes_.clear();
 }
+
+}  // namespace Acme

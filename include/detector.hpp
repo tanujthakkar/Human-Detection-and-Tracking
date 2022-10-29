@@ -42,6 +42,9 @@ SOFTWARE.
 #include <opencv2/dnn/dnn.hpp>
 #include <opencv2/opencv.hpp>
 
+
+namespace Acme {
+
 class Detector {
  public:
   /**
@@ -72,28 +75,28 @@ class Detector {
    *
    * @param size
    */
-  void setInputSize(const cv::Size size);
+  void setInputSize(const cv::Size& size);
 
   /**
    * @brief Set the class score threshold for filtering detections
    *
    * @param score_thresh double: score threshold
    */
-  void setScoreThreshold(const double score_thresh);
+  void setScoreThreshold(const double& score_thresh);
 
   /**
    * @brief Set the confidence threshold to filter out low confidence detections
    *
    * @param conf_thresh confidence threshold
    */
-  void setConfidenceThreshold(const double conf_thresh);
+  void setConfidenceThreshold(const double& conf_thresh);
 
   /**
    * @brief set threshold for Non-Maximum-Suppression
    *
    * @param nms_thresh
    */
-  void setNMSThreshold(const double nms_thresh);
+  void setNMSThreshold(const double& nms_thresh);
 
   /**
    * @brief Set the list of classes to detect using the detector model
@@ -186,5 +189,7 @@ class Detector {
   // vector of class labels that should be detected
   std::vector<std::string> classes_to_detect_;
 };
+
+}  // namespace Acme
 
 #endif  // INCLUDE_DETECTOR_HPP_

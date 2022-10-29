@@ -35,6 +35,8 @@ SOFTWARE.
  */
 #include <preprocessor.hpp>
 
+namespace Acme {
+
 // Constructor for object with input size for detector model
 Preprocessor::Preprocessor() : input_size_(cv::Size(640.0, 640.0)) {}
 
@@ -53,3 +55,5 @@ cv::Mat Preprocessor::preProcess(const cv::Mat& input_image) {
 
 // return size that is used for preprocessing
 cv::Size& Preprocessor::getInputSize() { return input_size_; }
+
+}  // namespace Acme

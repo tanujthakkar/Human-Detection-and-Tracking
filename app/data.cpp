@@ -35,6 +35,8 @@ SOFTWARE.
  */
 #include <data.hpp>
 
+namespace Acme {
+
 /**
  * @brief Constructor for Data object
  *
@@ -68,7 +70,7 @@ void Data::initialize() {
     // initialize videowriter object for saving output
     videowriter_ = cv::VideoWriter(outputs_path_ + "output.avi",
                                    cv::VideoWriter::fourcc('M', 'J', 'P', 'G'),
-                                   10, cv::Size(frame_width, frame_height));
+                                   24, cv::Size(frame_width, frame_height));
     if (!cap_.isOpened()) {
       // Fail to open stream device
       std::cout << "\nCannot open input camera!\n";
@@ -125,10 +127,12 @@ cv::Mat Data::readStream() {
 }
 
 // save output image with a specified name
-void Data::writeData(cv::Mat output, const std::string& name) {
+void Data::writeData(const cv::Mat& output, const std::string& name) {
   if (mode_ == "images") {
     cv::imwrite(outputs_path_ + name + ".jpg", output);
   } else if (mode_ == "stream") {
     videowriter_.write(output);
   }
 }
+
+}  // namespace Acme

@@ -39,6 +39,8 @@ SOFTWARE.
 #include <opencv2/dnn/dnn.hpp>
 #include <opencv2/opencv.hpp>
 
+namespace Acme {
+
 class Preprocessor {
  public:
   /**
@@ -72,5 +74,7 @@ class Preprocessor {
   // size required by detector model
   cv::Size input_size_;
 };
+
+}  // namespace Acme
 
 #endif  // INCLUDE_PREPROCESSOR_HPP_

@@ -41,6 +41,8 @@ SOFTWARE.
 #include <iostream>
 #include <opencv2/opencv.hpp>
 
+namespace Acme {
+
 class Data {
  public:
   /**
@@ -108,7 +110,7 @@ class Data {
    * @param output image to write
    * @param name name of output
    */
-  void writeData(cv::Mat output, const std::string& name);
+  void writeData(const cv::Mat& output, const std::string& name);
 
  private:
   // Input mode
@@ -140,5 +142,7 @@ class Data {
    */
   cv::Mat readStream();
 };
+
+}  // namespace Acme
 
 #endif  // INCLUDE_DATA_HPP_
