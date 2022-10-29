@@ -54,9 +54,9 @@ AcmePerception::AcmePerception(const std::string& mode,
   std::vector<std::string> classes{"person"};
   detector_.setClassesToDetect(classes);
   // set model path of detector
-  detector_.setModelPath("./data/models/YOLOv5s.onnx");
+  detector_.setModelPath("./../data/models/YOLOv5s.onnx");
   // set list of all class labels detected by detector
-  detector_.setClassList("./data/models/coco.names");
+  detector_.setClassList("./../data/models/coco.names");
 
   Eigen::Matrix4d extrinsics;
   extrinsics << 1, 0, 0, 0.25, 0, 1, 0, 0.00, 0, 0, 1, 0.05, 0, 0, 0, 1;
