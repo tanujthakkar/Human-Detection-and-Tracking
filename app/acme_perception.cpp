@@ -77,7 +77,6 @@ void AcmePerception::processInputs(const bool& visualize) {
   int counter = 0;
   size_t detected = 0;
   std::vector<cv::Rect2d> bboxes;
-  std::vector<cv::Rect2d> filtered_bboxes;
   std::vector<cv::Rect2d> tracker_bboxes;
   std::vector<std::pair<cv::Rect, float>> detections;
   std::vector<Eigen::Vector4d> positions;
@@ -114,8 +113,7 @@ void AcmePerception::processInputs(const bool& visualize) {
       drawLabel(output, bboxes);
     }
 
-    if(visualize)
-      cv::imshow("Acme Perception", output);  // Display output
+    if (visualize) cv::imshow("Acme Perception", output);  // Display output
 
     if (data_.getInputMode() == "images") {
       cv::waitKey(0);
@@ -150,7 +148,6 @@ cv::Mat AcmePerception::drawLabel(
 cv::Mat AcmePerception::drawLabel(const cv::Mat& input_image,
                                   const std::vector<cv::Rect2d>& bboxes) {
   for (size_t i = 0; i < bboxes.size(); ++i) {
-    std::stringstream stream;
     cv::rectangle(input_image, bboxes[i], cv::Scalar(0, 0, 255), 2, 1);
   }
   return input_image;

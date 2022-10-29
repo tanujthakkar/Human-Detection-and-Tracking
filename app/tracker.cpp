@@ -45,7 +45,8 @@ Tracker::~Tracker() { multi_tracker_->clear(); }
 void Tracker::track(const cv::Mat& frame,
                     const std::vector<cv::Rect2d>& bboxes) {
   multi_tracker_.release();
-  multi_tracker_ = cv::legacy::MultiTracker::create();  // Creating tracker from scratch
+  multi_tracker_ =
+      cv::legacy::MultiTracker::create();  // Creating tracker from scratch
   for (auto bbox : bboxes) {
     multi_tracker_->add(cv::legacy::TrackerKCF::create(), frame, bbox);
   }

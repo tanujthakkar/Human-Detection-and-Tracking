@@ -40,9 +40,9 @@ namespace Acme {
 
 Camera::Camera() {}
 
-Camera::Camera(const double& focal_length, const Eigen::Matrix4d& extrinsics) {
-  focal_length_ = focal_length;
-  extrinsics_ = extrinsics;
+Camera::Camera(const double& focal_length, const Eigen::Matrix4d& extrinsics) :
+  focal_length_(focal_length),
+  extrinsics_(extrinsics) {
 }
 
 Camera::~Camera() {}
