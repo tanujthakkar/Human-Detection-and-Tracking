@@ -72,7 +72,7 @@ class Tracker {
   void track(
       const cv::Mat& frame,
       const std::vector<cv::Rect2d>& bboxes);
-  
+
   /**
    * @brief Update the trackers with respect to frame
    * 
