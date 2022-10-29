@@ -38,14 +38,24 @@ SOFTWARE.
 
 namespace Acme {
 
-Transformer::Transformer(const double& focal_length, const Eigen::Matrix4d& extrinsics, const double& avg_human_height) {
+Transformer::Transformer() {}
+
+Transformer::Transformer(const double& focal_length,
+                         const Eigen::Matrix4d& extrinsics,
+                         const double& avg_human_height) {
+  initialize(focal_length, extrinsics, avg_human_height);
+}
+
+Transformer::~Transformer() {}
+
+void Transformer::initialize(const double& focal_length,
+                             const Eigen::Matrix4d& extrinsics,
+                             const double& avg_human_height) {
   camera_.setFocalLength(focal_length);
   camera_.setExtrinsics(extrinsics);
   avg_human_height_ =
       avg_human_height;  // Initializing avg_human_height (scale factor)
 }
-
-Transformer::~Transformer() {}
 
 std::vector<Eigen::Vector4d> Transformer::calculatePositions(
     const std::vector<cv::Rect2d>& bboxes) {

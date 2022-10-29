@@ -40,9 +40,7 @@ SOFTWARE.
 #pragma once
 
 #include <vector>
-
 #include <opencv2/core/types.hpp>
-
 #include <camera.hpp>
 
 namespace Acme {
@@ -52,16 +50,33 @@ class Transformer {
   /**
    * @brief Construct a new Transformer object
    *
+   */
+  Transformer();
+
+  /**
+   * @brief Construct a new Transformer object
+   *
    * @param camera
    * @param avg_human_height
    */
-  Transformer(const double& focal_length, const Eigen::Matrix4d& extrinsics, const double& avg_human_height);
+  Transformer(const double& focal_length, const Eigen::Matrix4d& extrinsics,
+              const double& avg_human_height);
 
   /**
    * @brief Destroy the Transformer object
    *
    */
   ~Transformer();
+
+  /**
+   * @brief Initialize private members
+   *
+   * @param focal_length
+   * @param extrinsics
+   * @param avg_human_height
+   */
+  void initialize(const double& focal_length, const Eigen::Matrix4d& extrinsics,
+                  const double& avg_human_height);
 
   /**
    * @brief Method to calculate poisitions of humans in robot frame
