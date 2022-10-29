@@ -36,61 +36,66 @@ SOFTWARE.
 
 #include <gtest/gtest.h>
 
+#include <acme_perception.hpp>
+#include <camera.hpp>
 #include <data.hpp>
 #include <detector.hpp>
+#include <opencv2/core/types.hpp>
 #include <preprocessor.hpp>
+#include <tracker.hpp>
+#include <transformer.hpp>
 
 TEST(Detector, setInputSize) {
-  Detector detector;
+  Acme::Detector detector;
   cv::Size s(100.0, 100.0);
   ASSERT_NO_THROW(detector.setInputSize(s));
 }
 
 TEST(Detector, setScoreThreshold) {
-  Detector detector;
+  Acme::Detector detector;
   double score_thresh = 0.2;
   ASSERT_NO_THROW(detector.setScoreThreshold(score_thresh));
 }
 
 TEST(Detector, setConfidenceThreshold) {
-  Detector detector;
+  Acme::Detector detector;
   double conf_thresh = 0.2;
   ASSERT_NO_THROW(detector.setConfidenceThreshold(conf_thresh));
 }
 
 TEST(Detector, setNMSThreshold) {
-  Detector detector;
+  Acme::Detector detector;
   double val = 0.2;
   ASSERT_NO_THROW(detector.setNMSThreshold(val));
 }
 
 TEST(Detector, setClassesToDetect) {
-  Detector detector;
+  Acme::Detector detector;
   std::vector<std::string> classes{"person", "car"};
   ASSERT_NO_THROW(detector.setClassesToDetect(classes));
 }
 
 TEST(Detector, setModelPath1) {
-  Detector detector;
+  Acme::Detector detector;
   ASSERT_NO_THROW(detector.setModelPath("./../data/models/YOLOv5s.onnx"));
 }
 
 TEST(Detector, setModelPath2) {
-  Detector detector;
+  Acme::Detector detector;
   ASSERT_ANY_THROW(detector.setModelPath("./../"));
 }
 
 TEST(Detector, setClassList) {
-  Detector detector;
+  Acme::Detector detector;
   ASSERT_NO_THROW(detector.setClassList("./../"));
 }
 
 TEST(Detector, detect) {
-  Detector detector;
+  Acme::Detector detector;
   detector.setClassesToDetect({"person"});
   detector.setModelPath("./../data/models/YOLOv5s.onnx");
   detector.setClassList("./../data/models/coco.names");
-  Preprocessor preprocessor;
+  Acme::Preprocessor preprocessor;
   cv::Mat img = cv::imread("./../data/test/1.jpg");
   cv::Mat blob = preprocessor.preProcess(img);
   std::vector<std::pair<cv::Rect, float>> result = detector.detect(blob, img);
@@ -98,36 +103,36 @@ TEST(Detector, detect) {
 }
 
 TEST(Preprocessor, preProcess1) {
-  Preprocessor preprocessor;
+  Acme::Preprocessor preprocessor;
   cv::Mat img;
   ASSERT_ANY_THROW(preprocessor.preProcess(img));
 }
 
 TEST(Preprocessor, preProcess2) {
-  Preprocessor preprocessor;
+  Acme::Preprocessor preprocessor;
   cv::Mat img = cv::imread("./../data/test/1.jpg");
   ASSERT_NO_THROW(preprocessor.preProcess(img));
 }
 
 TEST(Preprocessor, getInputSize1) {
-  Preprocessor preprocessor;
+  Acme::Preprocessor preprocessor;
   ASSERT_NO_THROW(preprocessor.getInputSize());
 }
 
 TEST(Data, Init1) {
   std::string mode = "images";
-  ASSERT_NO_THROW(Data data(mode, mode, mode));
+  ASSERT_NO_THROW(Acme::Data data(mode, mode, mode));
 }
 
 TEST(Data, getInput1) {
   std::string mode = "images";
-  Data data(mode, mode, mode);
+  Acme::Data data(mode, mode, mode);
   ASSERT_NO_THROW(data.getInput());
 }
 
 TEST(Data, getInput2) {
   std::string mode = "images";
-  Data data;
+  Acme::Data data;
   data.setInputMode(mode);
   data.setIOpaths("./../data/test/", "./../data/test_output/");
   data.initialize();
@@ -137,26 +142,81 @@ TEST(Data, getInput2) {
 
 TEST(Data, getInput3) {
   std::string mode = "stream";
-  Data data(mode, mode, mode);
+  Acme::Data data(mode, mode, mode);
   cv::Mat img = data.getInput();
   ASSERT_NE(img.size().height, 100);
 }
 
 TEST(Data, writeData1) {
   std::string s = "images";
-  Data data(s, s, s);
+  Acme::Data data(s, s, s);
   ASSERT_ANY_THROW(data.writeData(cv::Mat(), s));
 }
 
 TEST(Data, writeData2) {
   std::string s = "images";
-  Data data(s, s, s);
+  Acme::Data data(s, s, s);
   cv::Mat img(320, 240, CV_8UC3, cv::Scalar(0, 0, 0));
   ASSERT_NO_THROW(data.writeData(img, s));
 }
 
 TEST(Data, checkgetInput) {
   std::string s = "images";
-  Data data(s, s, s);
+  Acme::Data data(s, s, s);
   ASSERT_EQ(data.getInputMode(), s);
+}
+
+TEST(Tracker, checkTrack) {
+  Acme::Tracker t;
+  cv::Mat frame;
+  std::vector<cv::Rect2d> bboxes;
+  ASSERT_NO_THROW(t.track(frame, bboxes));
+}
+
+TEST(Tracker, checkUpdate) {
+  Acme::Tracker t;
+  cv::Mat frame;
+  ASSERT_NO_THROW(t.update(frame));
+}
+
+TEST(Tracker, checkGetObjests) {
+  Acme::Tracker t;
+  std::vector<cv::Rect2d> v;
+  ASSERT_EQ(t.getObjects(), v);
+}
+
+TEST(Camera, checkGetFocalLength) {
+  Eigen::Matrix4d m;
+  Acme::Camera c(0.035, m);
+  ASSERT_EQ(c.getFocalLength(), 0.035);
+}
+
+TEST(Camera, checkGetExtrinsics) {
+  Eigen::Matrix4d e;
+  e << 1, 0, 0, 0.025,
+       0, 1, 0, 0.00,
+       0, 0, 1, 0.05,
+       0, 0, 0, 1;
+  Acme::Camera c(0.035, e);
+  bool check = e.isApprox(c.getExtrinsics());
+  EXPECT_EQ(check, true);
+}
+
+TEST(Transformer, checkCalculatePositions) {
+  Eigen::Matrix4d e;
+  e << 1, 0, 0, 0.025,
+       0, 1, 0, 0.00,
+       0, 0, 1, 0.05,
+       0, 0, 0, 1;
+  Acme::Camera c(0.035, e);
+  
+  Eigen::Vector4d v(854.975, 1800, 0.475, 1);
+  std::vector<cv::Rect2d> bboxes;
+  cv::Rect2d bbox(57, 120, 75, 50);
+  bboxes.push_back(bbox);
+  
+  Acme::Transformer t(c, 5);
+  std::vector<Eigen::Vector4d> positions = t.calculatePositions(bboxes);
+  bool check = v.isApprox(positions[0]);
+  ASSERT_EQ(check, true);
 }
