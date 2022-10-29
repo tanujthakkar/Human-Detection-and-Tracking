@@ -40,7 +40,6 @@ SOFTWARE.
 #include <camera.hpp>
 #include <data.hpp>
 #include <detector.hpp>
-#include <opencv2/core/types.hpp>
 #include <preprocessor.hpp>
 #include <tracker.hpp>
 #include <transformer.hpp>
@@ -176,13 +175,18 @@ TEST(Tracker, checkTrack) {
 TEST(Tracker, checkUpdate) {
   Acme::Tracker t;
   cv::Mat frame;
+  std::vector<cv::Rect2d> bboxes;
+  bboxes.push_back(cv::Rect2d());
+  t.track(frame, bboxes);
   ASSERT_NO_THROW(t.update(frame));
 }
 
 TEST(Tracker, checkGetObjests) {
   Acme::Tracker t;
-  std::vector<cv::Rect2d> v;
-  ASSERT_EQ(t.getObjects(), v);
+  cv::Mat frame;
+  std::vector<cv::Rect2d> bboxes;
+  t.track(frame, bboxes);
+  ASSERT_EQ(t.getObjects(), bboxes);
 }
 
 TEST(Camera, checkGetFocalLength) {
@@ -193,29 +197,43 @@ TEST(Camera, checkGetFocalLength) {
 
 TEST(Camera, checkGetExtrinsics) {
   Eigen::Matrix4d e;
-  e << 1, 0, 0, 0.025,
-       0, 1, 0, 0.00,
-       0, 0, 1, 0.05,
-       0, 0, 0, 1;
+  e << 1, 0, 0, 0.025, 0, 1, 0, 0.00, 0, 0, 1, 0.05, 0, 0, 0, 1;
   Acme::Camera c(0.035, e);
   bool check = e.isApprox(c.getExtrinsics());
   EXPECT_EQ(check, true);
 }
 
+TEST(Camera, checkSetFocalLength) {
+  Eigen::Matrix4d m;
+  Acme::Camera c;
+  ASSERT_NO_THROW(c.setFocalLength(0.035));
+}
+
+TEST(Camera, checkSetExtrinsics) {
+  Eigen::Matrix4d e;
+  e << 1, 0, 0, 0.025, 0, 1, 0, 0.00, 0, 0, 1, 0.05, 0, 0, 0, 1;
+  Acme::Camera c;
+  ASSERT_NO_THROW(c.setExtrinsics(e));
+}
+
+TEST(Transformer, checkInitialize) {
+  Acme::Transformer t;
+  Eigen::Matrix4d e;
+  e << 1, 0, 0, 0.025, 0, 1, 0, 0.00, 0, 0, 1, 0.05, 0, 0, 0, 1;
+  ASSERT_NO_THROW(t.initialize(1200, e, 1.7));
+}
+
 TEST(Transformer, checkCalculatePositions) {
   Eigen::Matrix4d e;
-  e << 1, 0, 0, 0.025,
-       0, 1, 0, 0.00,
-       0, 0, 1, 0.05,
-       0, 0, 0, 1;
-  Acme::Camera c(0.035, e);
-  
-  Eigen::Vector4d v(854.975, 1800, 0.475, 1);
+  e << 1, 0, 0, 0.025, 0, 1, 0, 0.00, 0, 0, 1, 0.05, 0, 0, 0, 1;
+  Acme::Camera c(1200, e);
+
+  Eigen::Vector4d v(3.188, 4.93, 40.75, 1);
   std::vector<cv::Rect2d> bboxes;
   cv::Rect2d bbox(57, 120, 75, 50);
   bboxes.push_back(bbox);
-  
-  Acme::Transformer t(c, 5);
+
+  Acme::Transformer t(1200, e, 1.7);
   std::vector<Eigen::Vector4d> positions = t.calculatePositions(bboxes);
   bool check = v.isApprox(positions[0]);
   ASSERT_EQ(check, true);
