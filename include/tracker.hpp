@@ -51,14 +51,40 @@ namespace Acme {
 
 class Tracker {
  public:
+  /**
+   * @brief Construct a new Tracker object
+   * 
+   */
   Tracker();  // Default constructor
 
+  /**
+   * @brief Destroy the Tracker object
+   * 
+   */
   ~Tracker();  // Default destructor
 
+  /**
+   * @brief Setup trackers of the cv::MultiTracker object
+   * 
+   * @param frame 
+   * @param bboxes 
+   */
   void track(
       const cv::Mat& frame,
-      const std::vector<cv::Rect2d>& bboxes);  // Method to track detections
+      const std::vector<cv::Rect2d>& bboxes);
+  
+  /**
+   * @brief Update the trackers with respect to frame
+   * 
+   * @param frame 
+   */
   void update(const cv::Mat& frame);
+
+  /**
+   * @brief Get the Objects object
+   * 
+   * @return std::vector<cv::Rect2d> 
+   */
   std::vector<cv::Rect2d> getObjects();
 
  private:

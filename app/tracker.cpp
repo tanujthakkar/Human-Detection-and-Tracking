@@ -44,15 +44,12 @@ Tracker::~Tracker() { multi_tracker_.clear(); }
 
 void Tracker::track(const cv::Mat& frame,
                     const std::vector<cv::Rect2d>& bboxes) {
-  multi_tracker_.clear();  // Clearing any present trackers
-  for (auto bbox : bboxes) {
-    multi_tracker_.add(cv::legacy::TrackerKCF::create(), frame, bbox);
-  }
 }
 
-void Tracker::update(const cv::Mat& frame) { multi_tracker_.update(frame); }
+void Tracker::update(const cv::Mat& frame) {}
 
 std::vector<cv::Rect2d> Tracker::getObjects() {
-  return multi_tracker_.getObjects();
+  return {};
 }
+
 }  // namespace Acme
