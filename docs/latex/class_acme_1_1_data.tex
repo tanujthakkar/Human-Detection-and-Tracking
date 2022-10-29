@@ -1,0 +1,167 @@
+\hypertarget{class_acme_1_1_data}{}\doxysection{Acme\+::Data Class Reference}
+\label{class_acme_1_1_data}\index{Acme::Data@{Acme::Data}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_acme_1_1_data_a30b1475ef5870651e6e23341e0bec46e}{Data}} (const std\+::string \&mode, const std\+::string \&input\+\_\+path, const std\+::string \&output\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{class_acme_1_1_data}{Data}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_acme_1_1_data_a0b83e6927cfb4641b60d5627097911cb}{Data}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{class_acme_1_1_data}{Data}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_acme_1_1_data_ac9e76096837c39d11e13c545ad3ff6ff}{$\sim$\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \mbox{\hyperlink{class_acme_1_1_data}{Data}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_acme_1_1_data_a411ef22710d4da4b81aa1bbb42d9f589}{set\+Input\+Mode}} (const std\+::string \&mode)
+\begin{DoxyCompactList}\small\item\em Set the Input mode for processing. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_acme_1_1_data_abd65ee358579e3b6eac2d00490ba75ba}{set\+I\+Opaths}} (const std\+::string \&input\+\_\+path, const std\+::string \&output\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Set paths to input dir and output dir. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_acme_1_1_data_a527c118599b558efd0c7c54c29aca354}{initialize}} ()
+\begin{DoxyCompactList}\small\item\em Set up data members for reading and writing data. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_acme_1_1_data_a5c14b68ffa0c3887609d1bdc07af04bb}{get\+Input\+Mode}} ()
+\begin{DoxyCompactList}\small\item\em Get the input Mode\+: images/stream. \end{DoxyCompactList}\item 
+cv\+::\+Mat \mbox{\hyperlink{class_acme_1_1_data_ac8e0ce742a856a6388aec9390f407b34}{get\+Input}} ()
+\begin{DoxyCompactList}\small\item\em Get image for processing from either a image dir or a stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_acme_1_1_data_ab2a7025360fbfff61d030f423a97b580}{write\+Data}} (const cv\+::\+Mat \&output, const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em write output to output dir\+: images or make video file if mode==\char`\"{}stream\char`\"{} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_acme_1_1_data_a30b1475ef5870651e6e23341e0bec46e}\label{class_acme_1_1_data_a30b1475ef5870651e6e23341e0bec46e}} 
+\index{Acme::Data@{Acme::Data}!Data@{Data}}
+\index{Data@{Data}!Acme::Data@{Acme::Data}}
+\doxysubsubsection{\texorpdfstring{Data()}{Data()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Acme\+::\+Data\+::\+Data (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{mode,  }\item[{const std\+::string \&}]{input\+\_\+path,  }\item[{const std\+::string \&}]{output\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Constructor for \mbox{\hyperlink{class_acme_1_1_data}{Data}} object. 
+
+Constructor for \mbox{\hyperlink{class_acme_1_1_data}{Data}} object with mode, input and output paths.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & input mode. Valid modes\+: \char`\"{}images\char`\"{}, \char`\"{}stream\char`\"{} \\
+\hline
+{\em input\+\_\+path} & path to dir of inputs \\
+\hline
+{\em output\+\_\+path} & path to dir for saving outputs\\
+\hline
+{\em mode} & images/stream \\
+\hline
+{\em input\+\_\+path} & input images dir \\
+\hline
+{\em output\+\_\+path} & output dir \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_acme_1_1_data_a0b83e6927cfb4641b60d5627097911cb}\label{class_acme_1_1_data_a0b83e6927cfb4641b60d5627097911cb}} 
+\index{Acme::Data@{Acme::Data}!Data@{Data}}
+\index{Data@{Data}!Acme::Data@{Acme::Data}}
+\doxysubsubsection{\texorpdfstring{Data()}{Data()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Acme\+::\+Data\+::\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor for \mbox{\hyperlink{class_acme_1_1_data}{Data}} object. 
+
+\mbox{\Hypertarget{class_acme_1_1_data_ac9e76096837c39d11e13c545ad3ff6ff}\label{class_acme_1_1_data_ac9e76096837c39d11e13c545ad3ff6ff}} 
+\index{Acme::Data@{Acme::Data}!````~Data@{$\sim$Data}}
+\index{````~Data@{$\sim$Data}!Acme::Data@{Acme::Data}}
+\doxysubsubsection{\texorpdfstring{$\sim$Data()}{~Data()}}
+{\footnotesize\ttfamily Acme\+::\+Data\+::$\sim$\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor for \mbox{\hyperlink{class_acme_1_1_data}{Data}} object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_acme_1_1_data_ac8e0ce742a856a6388aec9390f407b34}\label{class_acme_1_1_data_ac8e0ce742a856a6388aec9390f407b34}} 
+\index{Acme::Data@{Acme::Data}!getInput@{getInput}}
+\index{getInput@{getInput}!Acme::Data@{Acme::Data}}
+\doxysubsubsection{\texorpdfstring{getInput()}{getInput()}}
+{\footnotesize\ttfamily cv\+::\+Mat Acme\+::\+Data\+::get\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get image for processing from either a image dir or a stream. 
+
+\begin{DoxyReturn}{Returns}
+cv\+::\+Mat image 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_acme_1_1_data_a5c14b68ffa0c3887609d1bdc07af04bb}\label{class_acme_1_1_data_a5c14b68ffa0c3887609d1bdc07af04bb}} 
+\index{Acme::Data@{Acme::Data}!getInputMode@{getInputMode}}
+\index{getInputMode@{getInputMode}!Acme::Data@{Acme::Data}}
+\doxysubsubsection{\texorpdfstring{getInputMode()}{getInputMode()}}
+{\footnotesize\ttfamily std\+::string Acme\+::\+Data\+::get\+Input\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the input Mode\+: images/stream. 
+
+\begin{DoxyReturn}{Returns}
+std\+::string mode\+:images/stream 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_acme_1_1_data_a527c118599b558efd0c7c54c29aca354}\label{class_acme_1_1_data_a527c118599b558efd0c7c54c29aca354}} 
+\index{Acme::Data@{Acme::Data}!initialize@{initialize}}
+\index{initialize@{initialize}!Acme::Data@{Acme::Data}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void Acme\+::\+Data\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Set up data members for reading and writing data. 
+
+\mbox{\Hypertarget{class_acme_1_1_data_a411ef22710d4da4b81aa1bbb42d9f589}\label{class_acme_1_1_data_a411ef22710d4da4b81aa1bbb42d9f589}} 
+\index{Acme::Data@{Acme::Data}!setInputMode@{setInputMode}}
+\index{setInputMode@{setInputMode}!Acme::Data@{Acme::Data}}
+\doxysubsubsection{\texorpdfstring{setInputMode()}{setInputMode()}}
+{\footnotesize\ttfamily void Acme\+::\+Data\+::set\+Input\+Mode (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{mode }\end{DoxyParamCaption})}
+
+
+
+Set the Input mode for processing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & images/stream \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_acme_1_1_data_abd65ee358579e3b6eac2d00490ba75ba}\label{class_acme_1_1_data_abd65ee358579e3b6eac2d00490ba75ba}} 
+\index{Acme::Data@{Acme::Data}!setIOpaths@{setIOpaths}}
+\index{setIOpaths@{setIOpaths}!Acme::Data@{Acme::Data}}
+\doxysubsubsection{\texorpdfstring{setIOpaths()}{setIOpaths()}}
+{\footnotesize\ttfamily void Acme\+::\+Data\+::set\+I\+Opaths (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{input\+\_\+path,  }\item[{const std\+::string \&}]{output\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Set paths to input dir and output dir. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+path} & \\
+\hline
+{\em output\+\_\+path} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_acme_1_1_data_ab2a7025360fbfff61d030f423a97b580}\label{class_acme_1_1_data_ab2a7025360fbfff61d030f423a97b580}} 
+\index{Acme::Data@{Acme::Data}!writeData@{writeData}}
+\index{writeData@{writeData}!Acme::Data@{Acme::Data}}
+\doxysubsubsection{\texorpdfstring{writeData()}{writeData()}}
+{\footnotesize\ttfamily void Acme\+::\+Data\+::write\+Data (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{output,  }\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+write output to output dir\+: images or make video file if mode==\char`\"{}stream\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & image to write \\
+\hline
+{\em name} & name of output \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/tanujthakkar/\+U\+M\+D/3\+\_\+\+Fall\+\_\+22/\+E\+N\+P\+M808\+X/\+Midterm/\+Human-\/\+Detection-\/and-\/\+Tracking/include/\mbox{\hyperlink{data_8hpp}{data.\+hpp}}\item 
+/home/tanujthakkar/\+U\+M\+D/3\+\_\+\+Fall\+\_\+22/\+E\+N\+P\+M808\+X/\+Midterm/\+Human-\/\+Detection-\/and-\/\+Tracking/app/\mbox{\hyperlink{data_8cpp}{data.\+cpp}}\end{DoxyCompactItemize}

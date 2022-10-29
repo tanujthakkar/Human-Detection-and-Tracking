@@ -1,0 +1,124 @@
+\hypertarget{class_acme_1_1_camera}{}\doxysection{Acme\+::Camera Class Reference}
+\label{class_acme_1_1_camera}\index{Acme::Camera@{Acme::Camera}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_acme_1_1_camera_a84734ef5cf54099c082775f3ef183e77}{Camera}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_acme_1_1_camera}{Camera}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_acme_1_1_camera_abcdc2cc7c3c16c4fb0f79c217876bda8}{Camera}} (const double \&focal\+\_\+length, const Eigen\+::\+Matrix4d \&extrinsics)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_acme_1_1_camera}{Camera}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_acme_1_1_camera_ab0a3f558141ab050fa9fd3749cccd87c}{$\sim$\+Camera}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{class_acme_1_1_camera}{Camera}} object. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_acme_1_1_camera_a1824bc34c034b6fe610b0d0792de5e4e}{get\+Focal\+Length}} () const
+\begin{DoxyCompactList}\small\item\em Get the Focal Length object. \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix4d \mbox{\hyperlink{class_acme_1_1_camera_a02b8cfaca7fb5e58f9f23d99637cb225}{get\+Extrinsics}} () const
+\begin{DoxyCompactList}\small\item\em Get the Extrinsics object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_acme_1_1_camera_a4f28004825c9443364176aa8996851e0}{set\+Focal\+Length}} (const double \&focal\+\_\+length)
+\begin{DoxyCompactList}\small\item\em Set the Focal Length object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_acme_1_1_camera_acb2f82aa84dec06b431b8ab202370e82}{set\+Extrinsics}} (const Eigen\+::\+Matrix4d \&extrinsics)
+\begin{DoxyCompactList}\small\item\em Set the Extrinsics object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_acme_1_1_camera_a84734ef5cf54099c082775f3ef183e77}\label{class_acme_1_1_camera_a84734ef5cf54099c082775f3ef183e77}} 
+\index{Acme::Camera@{Acme::Camera}!Camera@{Camera}}
+\index{Camera@{Camera}!Acme::Camera@{Acme::Camera}}
+\doxysubsubsection{\texorpdfstring{Camera()}{Camera()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Acme\+::\+Camera\+::\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{class_acme_1_1_camera}{Camera}} object. 
+
+\mbox{\Hypertarget{class_acme_1_1_camera_abcdc2cc7c3c16c4fb0f79c217876bda8}\label{class_acme_1_1_camera_abcdc2cc7c3c16c4fb0f79c217876bda8}} 
+\index{Acme::Camera@{Acme::Camera}!Camera@{Camera}}
+\index{Camera@{Camera}!Acme::Camera@{Acme::Camera}}
+\doxysubsubsection{\texorpdfstring{Camera()}{Camera()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Acme\+::\+Camera\+::\+Camera (\begin{DoxyParamCaption}\item[{const double \&}]{focal\+\_\+length,  }\item[{const Eigen\+::\+Matrix4d \&}]{extrinsics }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{class_acme_1_1_camera}{Camera}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em focal\+\_\+length} & Focal length of the camera \\
+\hline
+{\em extrinsics} & Extrinsics, i.\+e., transformation from robot frame to camera frame \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_acme_1_1_camera_ab0a3f558141ab050fa9fd3749cccd87c}\label{class_acme_1_1_camera_ab0a3f558141ab050fa9fd3749cccd87c}} 
+\index{Acme::Camera@{Acme::Camera}!````~Camera@{$\sim$Camera}}
+\index{````~Camera@{$\sim$Camera}!Acme::Camera@{Acme::Camera}}
+\doxysubsubsection{\texorpdfstring{$\sim$Camera()}{~Camera()}}
+{\footnotesize\ttfamily Acme\+::\+Camera\+::$\sim$\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destroy the \mbox{\hyperlink{class_acme_1_1_camera}{Camera}} object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_acme_1_1_camera_a02b8cfaca7fb5e58f9f23d99637cb225}\label{class_acme_1_1_camera_a02b8cfaca7fb5e58f9f23d99637cb225}} 
+\index{Acme::Camera@{Acme::Camera}!getExtrinsics@{getExtrinsics}}
+\index{getExtrinsics@{getExtrinsics}!Acme::Camera@{Acme::Camera}}
+\doxysubsubsection{\texorpdfstring{getExtrinsics()}{getExtrinsics()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix4d Acme\+::\+Camera\+::get\+Extrinsics (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Extrinsics object. 
+
+\begin{DoxyReturn}{Returns}
+Eigen\+::\+Matrix4d 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_acme_1_1_camera_a1824bc34c034b6fe610b0d0792de5e4e}\label{class_acme_1_1_camera_a1824bc34c034b6fe610b0d0792de5e4e}} 
+\index{Acme::Camera@{Acme::Camera}!getFocalLength@{getFocalLength}}
+\index{getFocalLength@{getFocalLength}!Acme::Camera@{Acme::Camera}}
+\doxysubsubsection{\texorpdfstring{getFocalLength()}{getFocalLength()}}
+{\footnotesize\ttfamily double Acme\+::\+Camera\+::get\+Focal\+Length (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Focal Length object. 
+
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_acme_1_1_camera_acb2f82aa84dec06b431b8ab202370e82}\label{class_acme_1_1_camera_acb2f82aa84dec06b431b8ab202370e82}} 
+\index{Acme::Camera@{Acme::Camera}!setExtrinsics@{setExtrinsics}}
+\index{setExtrinsics@{setExtrinsics}!Acme::Camera@{Acme::Camera}}
+\doxysubsubsection{\texorpdfstring{setExtrinsics()}{setExtrinsics()}}
+{\footnotesize\ttfamily void Acme\+::\+Camera\+::set\+Extrinsics (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix4d \&}]{extrinsics }\end{DoxyParamCaption})}
+
+
+
+Set the Extrinsics object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em extrinsics} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_acme_1_1_camera_a4f28004825c9443364176aa8996851e0}\label{class_acme_1_1_camera_a4f28004825c9443364176aa8996851e0}} 
+\index{Acme::Camera@{Acme::Camera}!setFocalLength@{setFocalLength}}
+\index{setFocalLength@{setFocalLength}!Acme::Camera@{Acme::Camera}}
+\doxysubsubsection{\texorpdfstring{setFocalLength()}{setFocalLength()}}
+{\footnotesize\ttfamily void Acme\+::\+Camera\+::set\+Focal\+Length (\begin{DoxyParamCaption}\item[{const double \&}]{focal\+\_\+length }\end{DoxyParamCaption})}
+
+
+
+Set the Focal Length object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em focal\+\_\+length} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/tanujthakkar/\+U\+M\+D/3\+\_\+\+Fall\+\_\+22/\+E\+N\+P\+M808\+X/\+Midterm/\+Human-\/\+Detection-\/and-\/\+Tracking/include/\mbox{\hyperlink{camera_8hpp}{camera.\+hpp}}\item 
+/home/tanujthakkar/\+U\+M\+D/3\+\_\+\+Fall\+\_\+22/\+E\+N\+P\+M808\+X/\+Midterm/\+Human-\/\+Detection-\/and-\/\+Tracking/app/\mbox{\hyperlink{camera_8cpp}{camera.\+cpp}}\end{DoxyCompactItemize}

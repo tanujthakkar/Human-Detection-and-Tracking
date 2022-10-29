@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>HumanDetectionandTracking: /home/nitesh/Desktop/backups/Human-Detection-and-Tracking/include/acme_perception.hpp Source File</title>
+<title>HumanDetectionandTracking: /home/tanujthakkar/UMD/3_Fall_22/ENPM808X/Midterm/Human-Detection-and-Tracking/include/acme_perception.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -114,43 +114,67 @@ $(document).ready(function(){initNavTree('acme__perception_8hpp_source.html','')
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#ifndef INCLUDE_ACME_PERCEPTION_HPP_</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#define INCLUDE_ACME_PERCEPTION_HPP_</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include&lt;string&gt;</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="data_8hpp.html">data.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="detector_8hpp.html">detector.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="preprocessor_8hpp.html">preprocessor.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="class_acme_perception.html">   44</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_acme_perception.html">AcmePerception</a> {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <a class="code" href="class_acme_perception.html#a572fef883a218b23639e662a249500ac">AcmePerception</a>(<span class="keyword">const</span> std::string&amp; mode, <span class="keyword">const</span> std::string&amp; input_path,</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                 <span class="keyword">const</span> std::string&amp; output_path, <span class="keyword">const</span> <span class="keywordtype">bool</span>&amp; save_data);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <a class="code" href="class_acme_perception.html#a5e61c9099cb028d85cd12efdda22c797">~AcmePerception</a>();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_acme_perception.html#a8b4b60df4371b8eb8e21561eb6075fab">processInputs</a>();</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <a class="code" href="class_detector.html">Detector</a> detector_;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <a class="code" href="class_preprocessor.html">Preprocessor</a> preprocessor_;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <a class="code" href="class_data.html">Data</a> data_;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="comment">// To record the input</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keywordtype">bool</span> save_data_;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;};</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#endif  // INCLUDE_ACME_PERCEPTION_HPP_</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &lt;opencv2/opencv.hpp&gt;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="data_8hpp.html">data.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="detector_8hpp.html">detector.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="preprocessor_8hpp.html">preprocessor.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include &lt;tracker.hpp&gt;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="transformer_8hpp.html">transformer.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">namespace </span>Acme {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="class_acme_1_1_acme_perception.html">   53</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_acme_1_1_acme_perception.html">AcmePerception</a> {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="class_acme_1_1_acme_perception.html#aaf3bd9b0e4b166c053b179a7672ca6f5">AcmePerception</a>(<span class="keyword">const</span> std::string&amp; mode, <span class="keyword">const</span> std::string&amp; input_path,</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                 <span class="keyword">const</span> std::string&amp; output_path, <span class="keyword">const</span> <span class="keywordtype">bool</span>&amp; save_data);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <a class="code" href="class_acme_1_1_acme_perception.html#a3d0dfbf6bb4019636d040f2f1279ccc2">~AcmePerception</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_acme_1_1_acme_perception.html#acb36e7e49c16280639db514080f1e000">processInputs</a>(<span class="keyword">const</span> <span class="keywordtype">bool</span>&amp; visualize);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <a class="code" href="class_acme_1_1_data.html">Data</a> data_;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <a class="code" href="class_acme_1_1_detector.html">Detector</a> detector_;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <a class="code" href="class_acme_1_1_preprocessor.html">Preprocessor</a> preprocessor_;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <a class="code" href="class_acme_1_1_tracker.html">Tracker</a> tracker_;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <a class="code" href="class_acme_1_1_transformer.html">Transformer</a> transformer_;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="comment">// To record the input</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="keywordtype">bool</span> save_data_;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  cv::Mat drawLabel(<span class="keyword">const</span> cv::Mat&amp; input_image,</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                    <span class="keyword">const</span> std::vector&lt;cv::Rect2d&gt;&amp; bboxes,</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                    <span class="keyword">const</span> std::vector&lt;Eigen::Vector4d&gt;&amp; positions);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  cv::Mat drawLabel(<span class="keyword">const</span> cv::Mat&amp; input_image,</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                    <span class="keyword">const</span> std::vector&lt;cv::Rect2d&gt;&amp; bboxes);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;};</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;}  <span class="comment">// namespace Acme</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="preprocessor">#endif  // INCLUDE_ACME_PERCEPTION_HPP_</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclass_detector_html"><div class="ttname"><a href="class_detector.html">Detector</a></div><div class="ttdef"><b>Definition:</b> detector.hpp:44</div></div>
-<div class="ttc" id="aclass_preprocessor_html"><div class="ttname"><a href="class_preprocessor.html">Preprocessor</a></div><div class="ttdef"><b>Definition:</b> preprocessor.hpp:42</div></div>
-<div class="ttc" id="aclass_data_html"><div class="ttname"><a href="class_data.html">Data</a></div><div class="ttdef"><b>Definition:</b> data.hpp:44</div></div>
-<div class="ttc" id="aclass_acme_perception_html_a5e61c9099cb028d85cd12efdda22c797"><div class="ttname"><a href="class_acme_perception.html#a5e61c9099cb028d85cd12efdda22c797">AcmePerception::~AcmePerception</a></div><div class="ttdeci">~AcmePerception()</div><div class="ttdoc">Destrctor for AcmePerception object.</div><div class="ttdef"><b>Definition:</b> acme_perception.cpp:60</div></div>
+<div class="ttc" id="aclass_acme_1_1_acme_perception_html_acb36e7e49c16280639db514080f1e000"><div class="ttname"><a href="class_acme_1_1_acme_perception.html#acb36e7e49c16280639db514080f1e000">Acme::AcmePerception::processInputs</a></div><div class="ttdeci">void processInputs(const bool &amp;visualize)</div><div class="ttdoc">process input image/stream to obtain detection and track them</div><div class="ttdef"><b>Definition:</b> acme_perception.cpp:74</div></div>
+<div class="ttc" id="aclass_acme_1_1_transformer_html"><div class="ttname"><a href="class_acme_1_1_transformer.html">Acme::Transformer</a></div><div class="ttdef"><b>Definition:</b> transformer.hpp:48</div></div>
+<div class="ttc" id="aclass_acme_1_1_data_html"><div class="ttname"><a href="class_acme_1_1_data.html">Acme::Data</a></div><div class="ttdef"><b>Definition:</b> data.hpp:46</div></div>
+<div class="ttc" id="aclass_acme_1_1_tracker_html"><div class="ttname"><a href="class_acme_1_1_tracker.html">Acme::Tracker</a></div><div class="ttdef"><b>Definition:</b> tracker.hpp:52</div></div>
+<div class="ttc" id="aclass_acme_1_1_acme_perception_html_aaf3bd9b0e4b166c053b179a7672ca6f5"><div class="ttname"><a href="class_acme_1_1_acme_perception.html#aaf3bd9b0e4b166c053b179a7672ca6f5">Acme::AcmePerception::AcmePerception</a></div><div class="ttdeci">AcmePerception(const std::string &amp;mode, const std::string &amp;input_path, const std::string &amp;output_path, const bool &amp;save_data)</div><div class="ttdoc">Constructor for AcmePerception object.</div><div class="ttdef"><b>Definition:</b> acme_perception.cpp:43</div></div>
 <div class="ttc" id="apreprocessor_8hpp_html"><div class="ttname"><a href="preprocessor_8hpp.html">preprocessor.hpp</a></div><div class="ttdoc">header file for Preprocessor class</div></div>
-<div class="ttc" id="aclass_acme_perception_html_a8b4b60df4371b8eb8e21561eb6075fab"><div class="ttname"><a href="class_acme_perception.html#a8b4b60df4371b8eb8e21561eb6075fab">AcmePerception::processInputs</a></div><div class="ttdeci">void processInputs()</div><div class="ttdoc">process input image/stream to obtain detection and track them</div><div class="ttdef"><b>Definition:</b> acme_perception.cpp:63</div></div>
-<div class="ttc" id="aclass_acme_perception_html"><div class="ttname"><a href="class_acme_perception.html">AcmePerception</a></div><div class="ttdef"><b>Definition:</b> acme_perception.hpp:44</div></div>
+<div class="ttc" id="aclass_acme_1_1_acme_perception_html"><div class="ttname"><a href="class_acme_1_1_acme_perception.html">Acme::AcmePerception</a></div><div class="ttdef"><b>Definition:</b> acme_perception.hpp:53</div></div>
 <div class="ttc" id="adata_8hpp_html"><div class="ttname"><a href="data_8hpp.html">data.hpp</a></div><div class="ttdoc">header file for Data class</div></div>
-<div class="ttc" id="aclass_acme_perception_html_a572fef883a218b23639e662a249500ac"><div class="ttname"><a href="class_acme_perception.html#a572fef883a218b23639e662a249500ac">AcmePerception::AcmePerception</a></div><div class="ttdeci">AcmePerception(const std::string &amp;mode, const std::string &amp;input_path, const std::string &amp;output_path, const bool &amp;save_data)</div><div class="ttdoc">Constructor for AcmePerception object.</div><div class="ttdef"><b>Definition:</b> acme_perception.cpp:40</div></div>
+<div class="ttc" id="aclass_acme_1_1_preprocessor_html"><div class="ttname"><a href="class_acme_1_1_preprocessor.html">Acme::Preprocessor</a></div><div class="ttdef"><b>Definition:</b> preprocessor.hpp:44</div></div>
+<div class="ttc" id="atransformer_8hpp_html"><div class="ttname"><a href="transformer_8hpp.html">transformer.hpp</a></div><div class="ttdoc">header file for Transformer class</div></div>
+<div class="ttc" id="aclass_acme_1_1_detector_html"><div class="ttname"><a href="class_acme_1_1_detector.html">Acme::Detector</a></div><div class="ttdef"><b>Definition:</b> detector.hpp:48</div></div>
+<div class="ttc" id="aclass_acme_1_1_acme_perception_html_a3d0dfbf6bb4019636d040f2f1279ccc2"><div class="ttname"><a href="class_acme_1_1_acme_perception.html#a3d0dfbf6bb4019636d040f2f1279ccc2">Acme::AcmePerception::~AcmePerception</a></div><div class="ttdeci">~AcmePerception()</div><div class="ttdoc">Destrctor for AcmePerception object.</div><div class="ttdef"><b>Definition:</b> acme_perception.cpp:71</div></div>
 <div class="ttc" id="adetector_8hpp_html"><div class="ttname"><a href="detector_8hpp.html">detector.hpp</a></div><div class="ttdoc">header file for Detector class</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

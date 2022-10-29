@@ -39,7 +39,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"acme__perception_8cpp.html"
+".html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

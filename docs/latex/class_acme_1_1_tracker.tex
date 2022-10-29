@@ -1,0 +1,92 @@
+\hypertarget{class_acme_1_1_tracker}{}\doxysection{Acme\+::Tracker Class Reference}
+\label{class_acme_1_1_tracker}\index{Acme::Tracker@{Acme::Tracker}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_acme_1_1_tracker_a8f8b5966900372fdb46e194df8725374}{Tracker}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_acme_1_1_tracker}{Tracker}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_acme_1_1_tracker_ad965e618bc2c6b08fb075c63c5431785}{$\sim$\+Tracker}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{class_acme_1_1_tracker}{Tracker}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_acme_1_1_tracker_a8636941080deff982fc21d8bce1120cf}{track}} (const cv\+::\+Mat \&frame, const std\+::vector$<$ cv\+::\+Rect2d $>$ \&bboxes)
+\begin{DoxyCompactList}\small\item\em Setup trackers of the cv\+::\+Multi\+Tracker object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_acme_1_1_tracker_ace041dbc7d8dc87e7c3ec811bc360e76}{update}} (const cv\+::\+Mat \&frame)
+\begin{DoxyCompactList}\small\item\em Update the trackers with respect to frame. \end{DoxyCompactList}\item 
+std\+::vector$<$ cv\+::\+Rect2d $>$ \mbox{\hyperlink{class_acme_1_1_tracker_a9fe49485b4e4be999e1cbb194f4eadba}{get\+Objects}} ()
+\begin{DoxyCompactList}\small\item\em Get the Objects object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_acme_1_1_tracker_a8f8b5966900372fdb46e194df8725374}\label{class_acme_1_1_tracker_a8f8b5966900372fdb46e194df8725374}} 
+\index{Acme::Tracker@{Acme::Tracker}!Tracker@{Tracker}}
+\index{Tracker@{Tracker}!Acme::Tracker@{Acme::Tracker}}
+\doxysubsubsection{\texorpdfstring{Tracker()}{Tracker()}}
+{\footnotesize\ttfamily Acme\+::\+Tracker\+::\+Tracker (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{class_acme_1_1_tracker}{Tracker}} object. 
+
+\mbox{\Hypertarget{class_acme_1_1_tracker_ad965e618bc2c6b08fb075c63c5431785}\label{class_acme_1_1_tracker_ad965e618bc2c6b08fb075c63c5431785}} 
+\index{Acme::Tracker@{Acme::Tracker}!````~Tracker@{$\sim$Tracker}}
+\index{````~Tracker@{$\sim$Tracker}!Acme::Tracker@{Acme::Tracker}}
+\doxysubsubsection{\texorpdfstring{$\sim$Tracker()}{~Tracker()}}
+{\footnotesize\ttfamily Acme\+::\+Tracker\+::$\sim$\+Tracker (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destroy the \mbox{\hyperlink{class_acme_1_1_tracker}{Tracker}} object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_acme_1_1_tracker_a9fe49485b4e4be999e1cbb194f4eadba}\label{class_acme_1_1_tracker_a9fe49485b4e4be999e1cbb194f4eadba}} 
+\index{Acme::Tracker@{Acme::Tracker}!getObjects@{getObjects}}
+\index{getObjects@{getObjects}!Acme::Tracker@{Acme::Tracker}}
+\doxysubsubsection{\texorpdfstring{getObjects()}{getObjects()}}
+{\footnotesize\ttfamily std\+::vector$<$ cv\+::\+Rect2d $>$ Acme\+::\+Tracker\+::get\+Objects (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Objects object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$cv\+::\+Rect2d$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_acme_1_1_tracker_a8636941080deff982fc21d8bce1120cf}\label{class_acme_1_1_tracker_a8636941080deff982fc21d8bce1120cf}} 
+\index{Acme::Tracker@{Acme::Tracker}!track@{track}}
+\index{track@{track}!Acme::Tracker@{Acme::Tracker}}
+\doxysubsubsection{\texorpdfstring{track()}{track()}}
+{\footnotesize\ttfamily void Acme\+::\+Tracker\+::track (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{frame,  }\item[{const std\+::vector$<$ cv\+::\+Rect2d $>$ \&}]{bboxes }\end{DoxyParamCaption})}
+
+
+
+Setup trackers of the cv\+::\+Multi\+Tracker object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame} & \\
+\hline
+{\em bboxes} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_acme_1_1_tracker_ace041dbc7d8dc87e7c3ec811bc360e76}\label{class_acme_1_1_tracker_ace041dbc7d8dc87e7c3ec811bc360e76}} 
+\index{Acme::Tracker@{Acme::Tracker}!update@{update}}
+\index{update@{update}!Acme::Tracker@{Acme::Tracker}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Acme\+::\+Tracker\+::update (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{frame }\end{DoxyParamCaption})}
+
+
+
+Update the trackers with respect to frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/tanujthakkar/\+U\+M\+D/3\+\_\+\+Fall\+\_\+22/\+E\+N\+P\+M808\+X/\+Midterm/\+Human-\/\+Detection-\/and-\/\+Tracking/include/tracker.\+hpp\item 
+/home/tanujthakkar/\+U\+M\+D/3\+\_\+\+Fall\+\_\+22/\+E\+N\+P\+M808\+X/\+Midterm/\+Human-\/\+Detection-\/and-\/\+Tracking/app/tracker.\+cpp\end{DoxyCompactItemize}

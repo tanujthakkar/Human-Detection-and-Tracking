@@ -1,0 +1,101 @@
+\hypertarget{class_acme_1_1_transformer}{}\doxysection{Acme\+::Transformer Class Reference}
+\label{class_acme_1_1_transformer}\index{Acme::Transformer@{Acme::Transformer}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_acme_1_1_transformer_af3bc11e02a291f4ec52868431cb36314}{Transformer}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_acme_1_1_transformer}{Transformer}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_acme_1_1_transformer_ac919a310980e26c60e2e9d5634f356e1}{Transformer}} (const double \&focal\+\_\+length, const Eigen\+::\+Matrix4d \&extrinsics, const double \&avg\+\_\+human\+\_\+height)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_acme_1_1_transformer}{Transformer}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_acme_1_1_transformer_a9dffc7674db5345eaf436f2bffd62b16}{$\sim$\+Transformer}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{class_acme_1_1_transformer}{Transformer}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_acme_1_1_transformer_a51a9980031abb45de58d4736ae41e85c}{initialize}} (const double \&focal\+\_\+length, const Eigen\+::\+Matrix4d \&extrinsics, const double \&avg\+\_\+human\+\_\+height)
+\begin{DoxyCompactList}\small\item\em Initialize private members. \end{DoxyCompactList}\item 
+std\+::vector$<$ Eigen\+::\+Vector4d $>$ \mbox{\hyperlink{class_acme_1_1_transformer_acd936294bbd622fdd8dbcec624b5c65a}{calculate\+Positions}} (const std\+::vector$<$ cv\+::\+Rect2d $>$ \&bboxes)
+\begin{DoxyCompactList}\small\item\em Method to calculate poisitions of humans in robot frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_acme_1_1_transformer_af3bc11e02a291f4ec52868431cb36314}\label{class_acme_1_1_transformer_af3bc11e02a291f4ec52868431cb36314}} 
+\index{Acme::Transformer@{Acme::Transformer}!Transformer@{Transformer}}
+\index{Transformer@{Transformer}!Acme::Transformer@{Acme::Transformer}}
+\doxysubsubsection{\texorpdfstring{Transformer()}{Transformer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Acme\+::\+Transformer\+::\+Transformer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{class_acme_1_1_transformer}{Transformer}} object. 
+
+\mbox{\Hypertarget{class_acme_1_1_transformer_ac919a310980e26c60e2e9d5634f356e1}\label{class_acme_1_1_transformer_ac919a310980e26c60e2e9d5634f356e1}} 
+\index{Acme::Transformer@{Acme::Transformer}!Transformer@{Transformer}}
+\index{Transformer@{Transformer}!Acme::Transformer@{Acme::Transformer}}
+\doxysubsubsection{\texorpdfstring{Transformer()}{Transformer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Acme\+::\+Transformer\+::\+Transformer (\begin{DoxyParamCaption}\item[{const double \&}]{focal\+\_\+length,  }\item[{const Eigen\+::\+Matrix4d \&}]{extrinsics,  }\item[{const double \&}]{avg\+\_\+human\+\_\+height }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{class_acme_1_1_transformer}{Transformer}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em camera} & \\
+\hline
+{\em avg\+\_\+human\+\_\+height} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_acme_1_1_transformer_a9dffc7674db5345eaf436f2bffd62b16}\label{class_acme_1_1_transformer_a9dffc7674db5345eaf436f2bffd62b16}} 
+\index{Acme::Transformer@{Acme::Transformer}!````~Transformer@{$\sim$Transformer}}
+\index{````~Transformer@{$\sim$Transformer}!Acme::Transformer@{Acme::Transformer}}
+\doxysubsubsection{\texorpdfstring{$\sim$Transformer()}{~Transformer()}}
+{\footnotesize\ttfamily Acme\+::\+Transformer\+::$\sim$\+Transformer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destroy the \mbox{\hyperlink{class_acme_1_1_transformer}{Transformer}} object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_acme_1_1_transformer_acd936294bbd622fdd8dbcec624b5c65a}\label{class_acme_1_1_transformer_acd936294bbd622fdd8dbcec624b5c65a}} 
+\index{Acme::Transformer@{Acme::Transformer}!calculatePositions@{calculatePositions}}
+\index{calculatePositions@{calculatePositions}!Acme::Transformer@{Acme::Transformer}}
+\doxysubsubsection{\texorpdfstring{calculatePositions()}{calculatePositions()}}
+{\footnotesize\ttfamily std\+::vector$<$ Eigen\+::\+Vector4d $>$ Acme\+::\+Transformer\+::calculate\+Positions (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ cv\+::\+Rect2d $>$ \&}]{bboxes }\end{DoxyParamCaption})}
+
+
+
+Method to calculate poisitions of humans in robot frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bboxes} & Bounding boxes being tracked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$\+Eigen\+::\+Vector4d$>$ Positions in robot frame 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_acme_1_1_transformer_a51a9980031abb45de58d4736ae41e85c}\label{class_acme_1_1_transformer_a51a9980031abb45de58d4736ae41e85c}} 
+\index{Acme::Transformer@{Acme::Transformer}!initialize@{initialize}}
+\index{initialize@{initialize}!Acme::Transformer@{Acme::Transformer}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void Acme\+::\+Transformer\+::initialize (\begin{DoxyParamCaption}\item[{const double \&}]{focal\+\_\+length,  }\item[{const Eigen\+::\+Matrix4d \&}]{extrinsics,  }\item[{const double \&}]{avg\+\_\+human\+\_\+height }\end{DoxyParamCaption})}
+
+
+
+Initialize private members. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em focal\+\_\+length} & \\
+\hline
+{\em extrinsics} & \\
+\hline
+{\em avg\+\_\+human\+\_\+height} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/tanujthakkar/\+U\+M\+D/3\+\_\+\+Fall\+\_\+22/\+E\+N\+P\+M808\+X/\+Midterm/\+Human-\/\+Detection-\/and-\/\+Tracking/include/\mbox{\hyperlink{transformer_8hpp}{transformer.\+hpp}}\item 
+/home/tanujthakkar/\+U\+M\+D/3\+\_\+\+Fall\+\_\+22/\+E\+N\+P\+M808\+X/\+Midterm/\+Human-\/\+Detection-\/and-\/\+Tracking/app/\mbox{\hyperlink{transformer_8cpp}{transformer.\+cpp}}\end{DoxyCompactItemize}

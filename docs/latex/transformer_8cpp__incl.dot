@@ -1,0 +1,17 @@
+digraph "/home/tanujthakkar/UMD/3_Fall_22/ENPM808X/Midterm/Human-Detection-and-Tracking/app/transformer.cpp"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="/home/tanujthakkar\l/UMD/3_Fall_22/ENPM808X\l/Midterm/Human-Detection\l-and-Tracking/app/transformer.cpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="source file for Transformer class"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="transformer.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$transformer_8hpp.html",tooltip="header file for Transformer class"];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="vector",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="opencv2/core/types.hpp",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node2 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="camera.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$camera_8hpp.html",tooltip="header file for Camera class"];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="Eigen/Dense",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+}

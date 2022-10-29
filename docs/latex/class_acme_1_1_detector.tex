@@ -1,0 +1,182 @@
+\hypertarget{class_acme_1_1_detector}{}\doxysection{Acme\+::Detector Class Reference}
+\label{class_acme_1_1_detector}\index{Acme::Detector@{Acme::Detector}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_acme_1_1_detector_a98be1e900d56b5b4b65b4d6c957cf778}{Detector}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{class_acme_1_1_detector}{Detector}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_acme_1_1_detector_ad7c591d8de75e8201fccf9603ff63efc}{$\sim$\+Detector}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \mbox{\hyperlink{class_acme_1_1_detector}{Detector}} object. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::pair$<$ cv\+::\+Rect, float $>$ $>$ \mbox{\hyperlink{class_acme_1_1_detector_ac20e68a96aae6779dfe7fe4e5ecfb07e}{detect}} (const cv\+::\+Mat \&input\+\_\+blob, const cv\+::\+Mat \&input\+\_\+image)
+\begin{DoxyCompactList}\small\item\em run detection and filtering on the input blob \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_acme_1_1_detector_a6035241fe138e9bdde875700fe5cbbf2}{set\+Input\+Size}} (const cv\+::\+Size \&size)
+\begin{DoxyCompactList}\small\item\em Set the Input Size for detection model. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_acme_1_1_detector_a7379c2342cc5ab8ef112d01a9d0e6982}{set\+Score\+Threshold}} (const double \&score\+\_\+thresh)
+\begin{DoxyCompactList}\small\item\em Set the class score threshold for filtering detections. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_acme_1_1_detector_a03078a8ac5f48d6abe29ab7fd6ce07e1}{set\+Confidence\+Threshold}} (const double \&conf\+\_\+thresh)
+\begin{DoxyCompactList}\small\item\em Set the confidence threshold to filter out low confidence detections. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_acme_1_1_detector_ab54d085e2f7493ad95b87e0f59247213}{set\+N\+M\+S\+Threshold}} (const double \&nms\+\_\+thresh)
+\begin{DoxyCompactList}\small\item\em set threshold for Non-\/\+Maximum-\/\+Suppression \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_acme_1_1_detector_af0523d816a5fe041b6a32520766c0616}{set\+Classes\+To\+Detect}} (const std\+::vector$<$ std\+::string $>$ \&classes)
+\begin{DoxyCompactList}\small\item\em Set the list of classes to detect using the detector model. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_acme_1_1_detector_afc547ba20b3054a45d263789c87cffe6}{set\+Model\+Path}} (const std\+::string \&model\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Set the detector model path. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_acme_1_1_detector_a74d0b00e8ae7e651ca27bf97d256bcaa}{set\+Class\+List}} (const std\+::string \&class\+\_\+list\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Populate list of all classes for the detector model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_acme_1_1_detector_a98be1e900d56b5b4b65b4d6c957cf778}\label{class_acme_1_1_detector_a98be1e900d56b5b4b65b4d6c957cf778}} 
+\index{Acme::Detector@{Acme::Detector}!Detector@{Detector}}
+\index{Detector@{Detector}!Acme::Detector@{Acme::Detector}}
+\doxysubsubsection{\texorpdfstring{Detector()}{Detector()}}
+{\footnotesize\ttfamily Acme\+::\+Detector\+::\+Detector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor for \mbox{\hyperlink{class_acme_1_1_detector}{Detector}} object. 
+
+\mbox{\Hypertarget{class_acme_1_1_detector_ad7c591d8de75e8201fccf9603ff63efc}\label{class_acme_1_1_detector_ad7c591d8de75e8201fccf9603ff63efc}} 
+\index{Acme::Detector@{Acme::Detector}!````~Detector@{$\sim$Detector}}
+\index{````~Detector@{$\sim$Detector}!Acme::Detector@{Acme::Detector}}
+\doxysubsubsection{\texorpdfstring{$\sim$Detector()}{~Detector()}}
+{\footnotesize\ttfamily Acme\+::\+Detector\+::$\sim$\+Detector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor for \mbox{\hyperlink{class_acme_1_1_detector}{Detector}} object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_acme_1_1_detector_ac20e68a96aae6779dfe7fe4e5ecfb07e}\label{class_acme_1_1_detector_ac20e68a96aae6779dfe7fe4e5ecfb07e}} 
+\index{Acme::Detector@{Acme::Detector}!detect@{detect}}
+\index{detect@{detect}!Acme::Detector@{Acme::Detector}}
+\doxysubsubsection{\texorpdfstring{detect()}{detect()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ cv\+::\+Rect, float $>$ $>$ Acme\+::\+Detector\+::detect (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{input\+\_\+blob,  }\item[{const cv\+::\+Mat \&}]{input\+\_\+image }\end{DoxyParamCaption})}
+
+
+
+run detection and filtering on the input blob 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+blob} & blob generated from image \\
+\hline
+{\em input\+\_\+image} & input image from which blob was generated \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+cv\+::\+Mat output image with labels, bounding box and confidence scores 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_acme_1_1_detector_af0523d816a5fe041b6a32520766c0616}\label{class_acme_1_1_detector_af0523d816a5fe041b6a32520766c0616}} 
+\index{Acme::Detector@{Acme::Detector}!setClassesToDetect@{setClassesToDetect}}
+\index{setClassesToDetect@{setClassesToDetect}!Acme::Detector@{Acme::Detector}}
+\doxysubsubsection{\texorpdfstring{setClassesToDetect()}{setClassesToDetect()}}
+{\footnotesize\ttfamily void Acme\+::\+Detector\+::set\+Classes\+To\+Detect (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{classes }\end{DoxyParamCaption})}
+
+
+
+Set the list of classes to detect using the detector model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em classes} & vector$<$string$>$ containing list of classes to detect \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_acme_1_1_detector_a74d0b00e8ae7e651ca27bf97d256bcaa}\label{class_acme_1_1_detector_a74d0b00e8ae7e651ca27bf97d256bcaa}} 
+\index{Acme::Detector@{Acme::Detector}!setClassList@{setClassList}}
+\index{setClassList@{setClassList}!Acme::Detector@{Acme::Detector}}
+\doxysubsubsection{\texorpdfstring{setClassList()}{setClassList()}}
+{\footnotesize\ttfamily void Acme\+::\+Detector\+::set\+Class\+List (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{class\+\_\+list\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Populate list of all classes for the detector model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em class\+\_\+list\+\_\+path} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_acme_1_1_detector_a03078a8ac5f48d6abe29ab7fd6ce07e1}\label{class_acme_1_1_detector_a03078a8ac5f48d6abe29ab7fd6ce07e1}} 
+\index{Acme::Detector@{Acme::Detector}!setConfidenceThreshold@{setConfidenceThreshold}}
+\index{setConfidenceThreshold@{setConfidenceThreshold}!Acme::Detector@{Acme::Detector}}
+\doxysubsubsection{\texorpdfstring{setConfidenceThreshold()}{setConfidenceThreshold()}}
+{\footnotesize\ttfamily void Acme\+::\+Detector\+::set\+Confidence\+Threshold (\begin{DoxyParamCaption}\item[{const double \&}]{conf\+\_\+thresh }\end{DoxyParamCaption})}
+
+
+
+Set the confidence threshold to filter out low confidence detections. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em conf\+\_\+thresh} & confidence threshold \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_acme_1_1_detector_a6035241fe138e9bdde875700fe5cbbf2}\label{class_acme_1_1_detector_a6035241fe138e9bdde875700fe5cbbf2}} 
+\index{Acme::Detector@{Acme::Detector}!setInputSize@{setInputSize}}
+\index{setInputSize@{setInputSize}!Acme::Detector@{Acme::Detector}}
+\doxysubsubsection{\texorpdfstring{setInputSize()}{setInputSize()}}
+{\footnotesize\ttfamily void Acme\+::\+Detector\+::set\+Input\+Size (\begin{DoxyParamCaption}\item[{const cv\+::\+Size \&}]{size }\end{DoxyParamCaption})}
+
+
+
+Set the Input Size for detection model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_acme_1_1_detector_afc547ba20b3054a45d263789c87cffe6}\label{class_acme_1_1_detector_afc547ba20b3054a45d263789c87cffe6}} 
+\index{Acme::Detector@{Acme::Detector}!setModelPath@{setModelPath}}
+\index{setModelPath@{setModelPath}!Acme::Detector@{Acme::Detector}}
+\doxysubsubsection{\texorpdfstring{setModelPath()}{setModelPath()}}
+{\footnotesize\ttfamily void Acme\+::\+Detector\+::set\+Model\+Path (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{model\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Set the detector model path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model\+\_\+path} & path to model \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_acme_1_1_detector_ab54d085e2f7493ad95b87e0f59247213}\label{class_acme_1_1_detector_ab54d085e2f7493ad95b87e0f59247213}} 
+\index{Acme::Detector@{Acme::Detector}!setNMSThreshold@{setNMSThreshold}}
+\index{setNMSThreshold@{setNMSThreshold}!Acme::Detector@{Acme::Detector}}
+\doxysubsubsection{\texorpdfstring{setNMSThreshold()}{setNMSThreshold()}}
+{\footnotesize\ttfamily void Acme\+::\+Detector\+::set\+N\+M\+S\+Threshold (\begin{DoxyParamCaption}\item[{const double \&}]{nms\+\_\+thresh }\end{DoxyParamCaption})}
+
+
+
+set threshold for Non-\/\+Maximum-\/\+Suppression 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nms\+\_\+thresh} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_acme_1_1_detector_a7379c2342cc5ab8ef112d01a9d0e6982}\label{class_acme_1_1_detector_a7379c2342cc5ab8ef112d01a9d0e6982}} 
+\index{Acme::Detector@{Acme::Detector}!setScoreThreshold@{setScoreThreshold}}
+\index{setScoreThreshold@{setScoreThreshold}!Acme::Detector@{Acme::Detector}}
+\doxysubsubsection{\texorpdfstring{setScoreThreshold()}{setScoreThreshold()}}
+{\footnotesize\ttfamily void Acme\+::\+Detector\+::set\+Score\+Threshold (\begin{DoxyParamCaption}\item[{const double \&}]{score\+\_\+thresh }\end{DoxyParamCaption})}
+
+
+
+Set the class score threshold for filtering detections. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em score\+\_\+thresh} & double\+: score threshold \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/tanujthakkar/\+U\+M\+D/3\+\_\+\+Fall\+\_\+22/\+E\+N\+P\+M808\+X/\+Midterm/\+Human-\/\+Detection-\/and-\/\+Tracking/include/\mbox{\hyperlink{detector_8hpp}{detector.\+hpp}}\item 
+/home/tanujthakkar/\+U\+M\+D/3\+\_\+\+Fall\+\_\+22/\+E\+N\+P\+M808\+X/\+Midterm/\+Human-\/\+Detection-\/and-\/\+Tracking/app/\mbox{\hyperlink{detector_8cpp}{detector.\+cpp}}\end{DoxyCompactItemize}
