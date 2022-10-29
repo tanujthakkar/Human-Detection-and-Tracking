@@ -36,12 +36,19 @@ SOFTWARE.
 #ifndef INCLUDE_ACME_PERCEPTION_HPP_
 #define INCLUDE_ACME_PERCEPTION_HPP_
 
-#include<string>
-#include <vector>
+#include <string>
 #include <utility>
+#include <vector>
+
+#include <opencv2/opencv.hpp>
+
 #include <data.hpp>
 #include <detector.hpp>
 #include <preprocessor.hpp>
+#include <tracker.hpp>
+#include <transformer.hpp>
+
+namespace Acme {
 
 class AcmePerception {
  public:
@@ -67,17 +74,13 @@ class AcmePerception {
    */
   void processInputs();
 
-  /**
-   * @brief Draw output of detection and tracking
-   * 
-   * @param input_image 
-   * @param boxes 
-   * @return cv::Mat 
-   */
-  cv::Mat drawLabel(const cv::Mat& input_image,
-                  std::vector<std::pair<cv::Rect, float>> boxes);
-
  private:
+  /**
+   * @brief Data object
+   *
+   */
+  Data data_;
+
   /**
    * @brief  Detector object
    *
@@ -91,14 +94,41 @@ class AcmePerception {
   Preprocessor preprocessor_;
 
   /**
-   * @brief Data object
+   * @brief Tracker object
    *
    */
+  Tracker tracker_;
 
-  Data data_;
+  /**
+   * @brief Transformer object
+   *
+   */
+  Transformer transformer_;
 
   // To record the input
   bool save_data_;
+
+  /**
+   * @brief Method for drawing labels in "stream" mode
+   *
+   * @param input_image
+   * @param boxes
+   * @return cv::Mat
+   */
+  cv::Mat drawLabel(const cv::Mat& input_image,
+                    const std::vector<cv::Rect2d>& bboxes,
+                    const std::vector<Eigen::Vector4d>& positions);
+
+  /**
+   * @brief Method overloading for drawing labels in "images" mode
+   *
+   * @param input_image
+   * @param bboxes
+   * @return cv::Mat
+   */
+  cv::Mat drawLabel(const cv::Mat& input_image,
+                    const std::vector<cv::Rect2d>& bboxes);
 };
 
+}  // namespace Acme
 #endif  // INCLUDE_ACME_PERCEPTION_HPP_
