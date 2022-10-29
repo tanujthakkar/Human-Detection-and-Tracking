@@ -34,24 +34,29 @@ SOFTWARE.
  *
  */
 
-
 #include <camera.hpp>
 
 namespace Acme {
 
-    Camera::Camera() {}
+Camera::Camera() {}
 
-    Camera::Camera(const double& focal_length, const Eigen::Matrix4d& extrinsics) {
-    }
+Camera::Camera(const double& focal_length, const Eigen::Matrix4d& extrinsics) {
+  focal_length_ = focal_length;
+  extrinsics_ = extrinsics;
+}
 
-    Camera::~Camera() {};
+Camera::~Camera() {}
 
-    double Camera::getFocalLength() const { return focal_length_; }
+double Camera::getFocalLength() const { return focal_length_; }
 
-    Eigen::Matrix4d Camera::getExtrinsics() const { return Eigen::Matrix4d(); }
+Eigen::Matrix4d Camera::getExtrinsics() const { return extrinsics_; }
 
-    void Camera::setFocalLength(const double &focal_length) {}
+void Camera::setFocalLength(const double& focal_length) {
+  focal_length_ = focal_length;
+}
 
-    void Camera::setExtrinsics(const Eigen::Matrix4d &extrinsics) {}
+void Camera::setExtrinsics(const Eigen::Matrix4d& extrinsics) {
+  extrinsics_ = extrinsics;
+}
 
 }  // namespace Acme

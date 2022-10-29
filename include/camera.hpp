@@ -43,60 +43,62 @@ SOFTWARE.
 
 namespace Acme {
 
-    class Camera {
-        public:
-            /**
-             * @brief Construct a new Camera object
-             * 
-             */
-            Camera();
+class Camera {
+ public:
+  /**
+   * @brief Construct a new Camera object
+   *
+   */
+  Camera();
 
-            /**
-             * @brief Construct a new Camera object
-             * 
-             * @param focal_length Focal length of the camera
-             * @param extrinsics Extrinsics, i.e., transformation from robot frame to camera frame
-             */
-            Camera(const double& focal_length, const Eigen::Matrix4d& extrinsics);
+  /**
+   * @brief Construct a new Camera object
+   *
+   * @param focal_length Focal length of the camera
+   * @param extrinsics Extrinsics, i.e., transformation from robot frame to
+   * camera frame
+   */
+  Camera(const double& focal_length, const Eigen::Matrix4d& extrinsics);
 
-            /**
-             * @brief Destroy the Camera object
-             * 
-             */
-            ~Camera();
-            
-            /**
-             * @brief Get the Focal Length object
-             * 
-             * @return double 
-             */
-            double getFocalLength() const;
+  /**
+   * @brief Destroy the Camera object
+   *
+   */
+  ~Camera();
 
-            /**
-             * @brief Get the Extrinsics object
-             * 
-             * @return Eigen::Matrix4d 
-             */
-            Eigen::Matrix4d getExtrinsics() const;
+  /**
+   * @brief Get the Focal Length object
+   *
+   * @return double
+   */
+  double getFocalLength() const;
 
-            /**
-             * @brief Set the Focal Length object
-             * 
-             * @param focal_length 
-             */
-            void setFocalLength(const double& focal_length);
+  /**
+   * @brief Get the Extrinsics object
+   *
+   * @return Eigen::Matrix4d
+   */
+  Eigen::Matrix4d getExtrinsics() const;
 
-            /**
-             * @brief Set the Extrinsics object
-             * 
-             * @param extrinsics 
-             */
-            void setExtrinsics(const Eigen::Matrix4d& extrinsics);
+  /**
+   * @brief Set the Focal Length object
+   *
+   * @param focal_length
+   */
+  void setFocalLength(const double& focal_length);
 
-        private:
-            double focal_length_;  // Focal length of the camera
-            Eigen::Matrix4d extrinsics_;  // Extrinsics, i.e., transformation from robot frame to camera frame
-    };
+  /**
+   * @brief Set the Extrinsics object
+   *
+   * @param extrinsics
+   */
+  void setExtrinsics(const Eigen::Matrix4d& extrinsics);
+
+ private:
+  double focal_length_;         // Focal length of the camera
+  Eigen::Matrix4d extrinsics_;  // Extrinsics, i.e., transformation from robot
+                                // frame to camera frame
+};
 
 }  // namespace Acme
 
