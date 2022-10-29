@@ -40,41 +40,43 @@ SOFTWARE.
 #pragma once
 
 #include <vector>
-#include "opencv2/core/types.hpp"
+
+#include <opencv2/core/types.hpp>
 
 #include <camera.hpp>
 
 namespace Acme {
 
-    class Transformer {
-        public:
-            /**
-             * @brief Construct a new Transformer object
-             * 
-             * @param camera 
-             * @param avg_human_height 
-             */
-            Transformer(const Camera& camera, const double& avg_human_height);
+class Transformer {
+ public:
+  /**
+   * @brief Construct a new Transformer object
+   *
+   * @param camera
+   * @param avg_human_height
+   */
+  Transformer(const double& focal_length, const Eigen::Matrix4d& extrinsics, const double& avg_human_height);
 
-            /**
-             * @brief Destroy the Transformer object
-             * 
-             */
-            ~Transformer();
+  /**
+   * @brief Destroy the Transformer object
+   *
+   */
+  ~Transformer();
 
-            /**
-             * @brief Method to calculate poisitions of humans in robot frame
-             * 
-             * @param bboxes Bounding boxes being tracked
-             * @return std::vector<Eigen::Vector4d> Positions in robot frame
-             */
-            std::vector<Eigen::Vector4d> calculatePositions(const std::vector<cv::Rect2d>& bboxes);
+  /**
+   * @brief Method to calculate poisitions of humans in robot frame
+   *
+   * @param bboxes Bounding boxes being tracked
+   * @return std::vector<Eigen::Vector4d> Positions in robot frame
+   */
+  std::vector<Eigen::Vector4d> calculatePositions(
+      const std::vector<cv::Rect2d>& bboxes);
 
-        private:
-            Camera camera_;  // Camera object
-            double avg_human_height_;  // Average human height for scaling factor
-    };
+ private:
+  Camera camera_;            // Camera object
+  double avg_human_height_;  // Average human height for scaling factor
+};
 
-}
+}  // namespace Acme
 
 #endif  // INCLUDE_TRANSFORMER_HPP_

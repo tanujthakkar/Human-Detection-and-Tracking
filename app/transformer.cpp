@@ -34,20 +34,47 @@ SOFTWARE.
  *
  */
 
-
-#include <vector>
-
 #include <transformer.hpp>
 
 namespace Acme {
 
-    Transformer::Transformer(const Camera& camera, const double& avg_human_height) {
-    }
+Transformer::Transformer(const double& focal_length, const Eigen::Matrix4d& extrinsics, const double& avg_human_height) {
+  camera_.setFocalLength(focal_length);
+  camera_.setExtrinsics(extrinsics);
+  avg_human_height_ =
+      avg_human_height;  // Initializing avg_human_height (scale factor)
+}
 
-    Transformer::~Transformer() {}
+Transformer::~Transformer() {}
 
-    std::vector<Eigen::Vector4d> Transformer::calculatePositions(const std::vector<cv::Rect2d> &bboxes) {
-        return std::vector<Eigen::Vector4d>();
-    }
+std::vector<Eigen::Vector4d> Transformer::calculatePositions(
+    const std::vector<cv::Rect2d>& bboxes) {
+  std::vector<Eigen::Vector4d> positions;
+
+  Eigen::Vector4d C;  // Center of bounding box in camera frame
+  Eigen::Vector4d R;  // Position in robot frame
+  // Iterating over each detection
+  for (auto bbox : bboxes) {
+    double estimated_depth =
+        (camera_.getFocalLength() / bbox.height) *
+        avg_human_height_;  // Estimated depth with respect to scale assumption
+    double factor = estimated_depth / camera_.getFocalLength();
+
+    double C_X =
+        factor *
+        (bbox.x +
+         (bbox.width / 2));  // X coordinate of detected human in camera frame
+    double C_Y =
+        factor *
+        (bbox.y +
+         (bbox.height / 2));  // Y coordinate of detected human in camera frame
+    C << C_X, C_Y, estimated_depth, 1;
+
+    R = camera_.getExtrinsics().inverse() * C;  // Detected human in robot frame
+    positions.push_back(R);  // Pushing back position in robot frame
+  }
+
+  return positions;
+}
 
 }  // namespace Acme
