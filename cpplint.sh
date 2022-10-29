@@ -1,1 +1,2 @@
-cpplint $( find . -name *.cpp -or -name *.hpp | grep -vE -e "^./build/" -e "^./vendor/" ) > results/cpplint.txt
+cpplint --repository=`pwd` $( find . -name *.cpp -or -name *.hpp | grep -vE -e "^./build/" -e "^./vendor/" -e ^"./opencv/")
+cpplint --repository=`pwd` $( find . -name *.cpp -or -name *.hpp | grep -vE -e "^./build/" -e "^./vendor/" -e ^"./opencv/") > results/cpplint.txt

@@ -1,1 +1,2 @@
-cppcheck --enable=all --std=c++11 -I include/ --suppress=missingIncludeSystem $( find . -name *.cpp | grep -vE -e "^./build/" -e "^./vendor/" ) > results/cppcheck.txt
+cppcheck --enable=all --std=c++14 -I include/ --suppress=missingIncludeSystem $( find . -name *.cpp | grep -vE -e "^./build/" -e "^./vendor/" -e "^./opencv/" -e "^./opencv_4.6/")
+cppcheck --enable=all --std=c++14 -I include/ --suppress=missingIncludeSystem $( find . -name *.cpp | grep -vE -e "^./build/" -e "^./vendor/" -e "^./opencv/" -e "^./opencv_4.6/") > results/cppcheck.txt
