@@ -29,6 +29,11 @@ The tracked objects are then transformed to obtain their positions with respect 
 ## Instructions
 
 ### Dependencies
+<ul>
+    <li>OpenCV 4.6</li>
+    <li>Eigen 3.4</li>
+</ul>
+
 ```
     sh requirements.sh
 ```
@@ -39,11 +44,13 @@ The tracked objects are then transformed to obtain their positions with respect 
 
 ### Running the package
 ```
-    ./build/app/app
+    cd build
+    ./app/app
 ```
 
 ### Running tests
-```
+``` 
+    cd build
     ./build/test/cpp-test
 ```
 
@@ -67,7 +74,7 @@ The tracked objects are then transformed to obtain their positions with respect 
 ## Project Design
 <ul>
     <li><a href='https://github.com/tanujthakkar/Human-Detection-and-Tracking/blob/master/UML/revised/UML%20Class%20Diagram.png' >UML Class Diagram</a></li>
-    <li><a href='https://github.com/tanujthakkar/Human-Detection-and-Tracking/blob/master/UML/initial/UML%20Activity%20Diagram.png' >UML Activity Diagram</a></li>
+    <li><a href='https://github.com/tanujthakkar/Human-Detection-and-Tracking/blob/master/UML/revised/UML%20Activity%20Diagram.png' >UML Activity Diagram</a></li>
     <li><a href='https://github.com/tanujthakkar/Human-Detection-and-Tracking/blob/master/Proposal/Quadchart.png' >Quadchart</a></li>
 </ul>
 
@@ -95,6 +102,14 @@ The tracked objects are then transformed to obtain their positions with respect 
     </ul>
 </ul>
 
+## Results
+
+![image](https://github.com/tanujthakkar/Human-Detection-and-Tracking/blob/master/data/outputs/test_0.jpg)
+![image](https://github.com/tanujthakkar/Human-Detection-and-Tracking/blob/master/data/outputs/test_7.jpg)
+
+For video result, please refer to this <a href='https://drive.google.com/file/d/1C9i3QV-4Tnk-0VfXmFYqoNAuul_xaxum/view?usp=share_link' >video</a>.
+
+
 ## Additional Links
 <ul>
     <li>Proposal</li>
@@ -105,5 +120,9 @@ The tracked objects are then transformed to obtain their positions with respect 
     <li>Phase 1</li>
     <ul>
         <li><a href='https://drive.google.com/file/d/1rZQk-GdYQfyh0IcFAtmXDycsm62yBIaS/view?usp=sharing' >Video</a></li>
+    </ul>
+    <li>Phase 2</li>
+    <ul>
+        <li><a href='https://drive.google.com/file/d/1C9i3QV-4Tnk-0VfXmFYqoNAuul_xaxum/view?usp=share_link' >Video</a></li>
     </ul>
 </ul>
