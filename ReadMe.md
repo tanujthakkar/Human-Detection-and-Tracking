@@ -107,8 +107,7 @@ The tracked objects are then transformed to obtain their positions with respect 
 ![image](https://github.com/tanujthakkar/Human-Detection-and-Tracking/blob/master/data/outputs/test_0.jpg)
 ![image](https://github.com/tanujthakkar/Human-Detection-and-Tracking/blob/master/data/outputs/test_7.jpg)
 
-For video result, please refer to this <a href='https://drive.google.com/file/d/1C9i3QV-4Tnk-0VfXmFYqoNAuul_xaxum/view?usp=share_link' >video</a>.
-
+![video](https://github.com/tanujthakkar/Human-Detection-and-Tracking/blob/master/data/outputs/stream_result.gif)
 
 ## Additional Links
 <ul>
